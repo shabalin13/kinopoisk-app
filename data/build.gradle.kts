@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kapt)
     alias(libs.plugins.kotlin.serialization)
 }
 
@@ -47,6 +48,10 @@ dependencies {
 
     // Local
     implementation(project(":domain"))
+
+    // Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
     // Retrofit
     implementation(libs.retrofit)
