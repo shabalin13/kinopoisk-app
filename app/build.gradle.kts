@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -79,4 +80,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Local
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    // Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+    // Jetpack Navigation
+    implementation(libs.navigation.compose)
 }
