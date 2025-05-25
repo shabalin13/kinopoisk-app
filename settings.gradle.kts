@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Kinopoisk"
 include(":app")
 include(":domain")
+include(":data")
