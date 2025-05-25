@@ -88,4 +88,7 @@ dependencies {
     // Dagger
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
+
+    // Jetpack Navigation
+    implementation(libs.navigation.compose)
 }

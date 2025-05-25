@@ -7,7 +7,7 @@ import dagger.Component
     modules = [AppModule::class],
     dependencies = [DataComponent::class]
 )
-internal interface AppComponent {
+internal interface AppComponent : FeatureDependencies {
 
     @Component.Factory
     interface Factory {
