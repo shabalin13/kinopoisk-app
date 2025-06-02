@@ -10,12 +10,11 @@ import com.shabalin13.kinopoisk.di.FeatureDependencies
 import com.shabalin13.kinopoisk.mediaCatalog.navigation.MediaCatalogEntry
 import com.shabalin13.kinopoisk.mediaCatalog.navigation.MediaCatalogRoutes
 
-@Suppress("UnusedParameter")
 @Composable
 fun AppNavGraph(
-    modifier: Modifier = Modifier,
     navController: NavHostController,
     featureDependencies: FeatureDependencies,
+    modifier: Modifier = Modifier,
 ) {
     NavHost(
         navController = navController,
