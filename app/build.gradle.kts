@@ -29,10 +29,10 @@ android {
                 keystorePropsFile.inputStream().use {
                     keystoreProperties.load(it)
                 }
-                storeFile = rootProject.file(keystoreProperties["storeFile"] as String)
-                storePassword = keystoreProperties["storePassword"] as String
-                keyAlias = keystoreProperties["keyAlias"] as String
-                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
             } else {
                 storeFile = rootProject.file("keystore/${System.getenv("KEYSTORE_FILE")}")
                 storePassword = System.getenv("KEYSTORE_PASSWORD")

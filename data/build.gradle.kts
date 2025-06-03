@@ -14,12 +14,19 @@ android {
     defaultConfig {
         minSdk = 27
 
-        val properties = Properties().apply {
-            load(rootProject.file("local.properties").inputStream())
-        }
+        val localProperties = Properties()
+        val localPropsFile = rootProject.file("local.properties")
 
-        buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL"))
-        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
+        if (localPropsFile.exists()) {
+            localPropsFile.inputStream().use {
+                localProperties.load(it)
+            }
+            buildConfigField("String", "BASE_URL", "\"${localProperties.getProperty("BASE_URL")}\"")
+            buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("API_KEY")}\"")
+        } else {
+            buildConfigField("String", "BASE_URL", "\"${System.getenv("KINOPOISK_BASE_URL")}\"")
+            buildConfigField("String", "API_KEY", "\"${System.getenv("KINOPOISK_API_KEY")}\"")
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

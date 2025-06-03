@@ -19,6 +19,8 @@ jobs:
       KEYSTORE_SIGN_KEY_ALIAS: ${{ secrets.KEYSTORE_SIGN_KEY_ALIAS }}
       KEYSTORE_SIGN_KEY_PASSWORD: ${{ secrets.KEYSTORE_SIGN_KEY_PASSWORD }}
       KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
+      KINOPOISK_BASE_URL: ${{ secrets.KINOPOISK_BASE_URL }}
+      KINOPOISK_API_KEY: ${{ secrets.KINOPOISK_API_KEY }}
 
     steps:
       - name: Checkout code
