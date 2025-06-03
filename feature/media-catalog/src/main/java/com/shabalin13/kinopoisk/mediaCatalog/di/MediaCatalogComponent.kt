@@ -4,6 +4,7 @@ import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogViewModel
 import dagger.Component
 
 @Component(
+    modules = [MediaCatalogModule::class],
     dependencies = [MediaCatalogDependencies::class]
 )
 internal interface MediaCatalogComponent {
