@@ -1,3 +1,6 @@
 package com.shabalin13.kinopoisk.di
 
-interface FeatureDependencies
+import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogDependencies
+
+interface FeatureDependencies :
+    MediaCatalogDependencies

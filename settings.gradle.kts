@@ -23,3 +23,5 @@ rootProject.name = "Kinopoisk"
 include(":app")
 include(":domain")
 include(":data")
+include(":feature:media-catalog")
+include(":core:ui")

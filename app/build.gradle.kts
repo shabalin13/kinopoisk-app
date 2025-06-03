@@ -84,6 +84,8 @@ dependencies {
     // Local
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":feature:media-catalog"))
+    implementation(project(":core:ui"))
 
     // Dagger
     implementation(libs.dagger)

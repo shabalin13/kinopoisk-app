@@ -35,9 +35,7 @@ internal class MediaCatalogPagingSource @AssistedInject constructor(
                 val currentPage = mediaCatalogDto.page
                 val maxPage = mediaCatalogDto.pages
 
-                val mediaCatalogItems = mediaCatalogDto.items.map { mediaCatalogItemDto ->
-                    mediaCatalogMapper.mapToDomain(mediaCatalogItemDto)
-                }
+                val mediaCatalogItems = mediaCatalogMapper.mapToDomain(mediaCatalogDto)
 
                 LoadResult.Page(
                     data = mediaCatalogItems,
