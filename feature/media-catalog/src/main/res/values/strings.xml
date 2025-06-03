@@ -3,4 +3,5 @@
     <string name="poster_content_description">Постер для медиа-контента</string>
     <string name="initial_content_message">Введите запрос для отображения результатов</string>
     <string name="retry_button_title">Повторить</string>
+    <string name="unknown_error_message">Неизвестная ошибка</string>
 </resources>
