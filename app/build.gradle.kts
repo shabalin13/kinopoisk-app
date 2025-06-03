@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kapt)
 }
 
 android {
@@ -28,10 +29,10 @@ android {
                 keystorePropsFile.inputStream().use {
                     keystoreProperties.load(it)
                 }
-                storeFile = rootProject.file(keystoreProperties["storeFile"] as String)
-                storePassword = keystoreProperties["storePassword"] as String
-                keyAlias = keystoreProperties["keyAlias"] as String
-                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
             } else {
                 storeFile = rootProject.file("keystore/${System.getenv("KEYSTORE_FILE")}")
                 storePassword = System.getenv("KEYSTORE_PASSWORD")
@@ -79,4 +80,17 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Local
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":feature:media-catalog"))
+    implementation(project(":core:ui"))
+
+    // Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+    // Jetpack Navigation
+    implementation(libs.navigation.compose)
 }
