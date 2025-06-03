@@ -21,6 +21,7 @@ kotlinxSerializationJson = "1.8.0"
 navigation = "2.9.0"
 glideCompose = "1.0.0-beta01"
 composeShimmer = "1.3.3"
+pagingCompose = "3.3.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,6 +55,7 @@ paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.r
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 glide-compose = { group = "com.github.bumptech.glide", name = "compose", version.ref = "glideCompose" }
 compose-shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = "composeShimmer" }
+paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

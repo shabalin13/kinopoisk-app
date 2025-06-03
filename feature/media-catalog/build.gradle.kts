@@ -77,4 +77,8 @@ dependencies {
 
     // Shimmer
     implementation(libs.compose.shimmer)
+
+    // Paging
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.compose)
 }
