@@ -71,4 +71,7 @@ dependencies {
 
     // Jetpack Navigation
     implementation(libs.navigation.compose)
+
+    // Glide
+    implementation(libs.glide.compose)
 }
