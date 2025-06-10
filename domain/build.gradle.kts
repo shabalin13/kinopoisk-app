@@ -14,4 +14,7 @@ kotlin {
 dependencies {
     // Paging3 without Android dependencies
     implementation(libs.paging.common)
+
+    // Kotlinx Datetime
+    implementation(libs.kotlinx.datetime)
 }
