@@ -2,6 +2,7 @@ package com.shabalin13.kinopoisk.data.di
 
 import com.shabalin13.kinopoisk.data.BuildConfig
 import com.shabalin13.kinopoisk.data.mediaCatalog.di.MediaCatalogModule
+import com.shabalin13.kinopoisk.data.mediaDetails.di.MediaDetailsModule
 import com.shabalin13.kinopoisk.data.remote.KinopoiskApi
 import com.shabalin13.kinopoisk.data.remote.interceptors.ApiKeyInterceptor
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
@@ -16,7 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
 @Module(
-    includes = [MediaCatalogModule::class]
+    includes = [MediaCatalogModule::class, MediaDetailsModule::class]
 )
 internal class DataModule {
 
