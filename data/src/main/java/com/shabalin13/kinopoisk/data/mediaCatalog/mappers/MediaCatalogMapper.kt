@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.data.mediaCatalog.mapper
+package com.shabalin13.kinopoisk.data.mediaCatalog.mappers
 
 import com.shabalin13.kinopoisk.data.mediaCatalog.remote.dtos.MediaCatalogDto
 import com.shabalin13.kinopoisk.data.mediaCatalog.remote.dtos.MediaCatalogItemDto
