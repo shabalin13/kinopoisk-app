@@ -5,10 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.navigation
 import com.shabalin13.kinopoisk.di.FeatureDependencies
 import com.shabalin13.kinopoisk.mediaCatalog.navigation.MediaCatalogEntry
-import com.shabalin13.kinopoisk.mediaCatalog.navigation.MediaCatalogRoutes
 
 @Composable
 fun AppNavGraph(
@@ -18,25 +16,16 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = AppRoutes.AppGraph.route,
-        modifier = modifier
+        startDestination = MediaCatalogEntry.getRoute(),
+        modifier = modifier,
+        route = AppRoute.AppGraph.route
     ) {
-        navigation(
-            startDestination = MediaCatalogRoutes.MediaCatalogGraph.route,
-            route = AppRoutes.AppGraph.route
-        ) {
-            navigation(
-                startDestination = MediaCatalogRoutes.MediaCatalogMain.route,
-                route = MediaCatalogRoutes.MediaCatalogGraph.route
-            ) {
-                MediaCatalogEntry.getNavGraph(
-                    navController,
-                    featureDependencies,
-                    onMediaCatalogItemClick = { mediaId ->
-                        Log.d("MediaDetails", "Selected Media Catalog Item: $mediaId")
-                    }
-                ).invoke(this)
+        MediaCatalogEntry.getNavGraph(
+            navController = navController,
+            dependencies = featureDependencies,
+            onMediaCatalogItemClick = { mediaId ->
+                Log.d("MediaDetails", "Selected Media Catalog Item: $mediaId")
             }
-        }
+        ).invoke(this)
     }
 }

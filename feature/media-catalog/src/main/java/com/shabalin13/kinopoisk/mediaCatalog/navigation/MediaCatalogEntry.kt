@@ -14,4 +14,6 @@ object MediaCatalogEntry {
             mediaCatalogNavGraph(navController, dependencies, onMediaCatalogItemClick)
         }
     }
+
+    fun getRoute() = MediaCatalogRoute.MediaCatalogGraph.route
 }
