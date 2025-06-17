@@ -1,12 +1,12 @@
 package com.shabalin13.kinopoisk.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.shabalin13.kinopoisk.di.FeatureDependencies
 import com.shabalin13.kinopoisk.mediaCatalog.navigation.MediaCatalogEntry
+import com.shabalin13.kinopoisk.mediaDetails.navigation.MediaDetailsEntry
 
 @Composable
 fun AppNavGraph(
@@ -24,8 +24,13 @@ fun AppNavGraph(
             navController = navController,
             dependencies = featureDependencies,
             onMediaCatalogItemClick = { mediaId ->
-                Log.d("MediaDetails", "Selected Media Catalog Item: $mediaId")
+                navController.navigate(MediaDetailsEntry.getRoute(mediaId))
             }
+        ).invoke(this)
+
+        MediaDetailsEntry.getNavGraph(
+            navController = navController,
+            dependencies = featureDependencies
         ).invoke(this)
     }
 }
