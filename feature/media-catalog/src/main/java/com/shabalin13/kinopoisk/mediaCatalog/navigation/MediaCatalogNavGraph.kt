@@ -1,6 +1,8 @@
 package com.shabalin13.kinopoisk.mediaCatalog.navigation
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -29,8 +31,11 @@ fun NavGraphBuilder.mediaCatalogNavGraph(
             factory = componentViewModel.component.mediaCatalogViewModelFactory()
         )
 
+        val state by viewModel.state.collectAsStateWithLifecycle()
+
         MediaCatalogScreen(
-            viewModel = viewModel,
+            state = state,
+            handleIntent = viewModel::handleIntent,
             onMediaCatalogItemClick = onMediaCatalogItemClick
         )
     }

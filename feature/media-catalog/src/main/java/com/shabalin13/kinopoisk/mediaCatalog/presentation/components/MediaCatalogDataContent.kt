@@ -16,7 +16,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.shabalin13.kinopoisk.mediaCatalog.R
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogState
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.RatingUiModel
+import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.RatingColors
 import kotlinx.coroutines.flow.flowOf

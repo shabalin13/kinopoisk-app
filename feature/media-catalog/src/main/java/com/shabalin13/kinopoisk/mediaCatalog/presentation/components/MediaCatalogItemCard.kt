@@ -24,8 +24,8 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import com.shabalin13.kinopoisk.mediaCatalog.R
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.RatingUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
+import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
 import com.shabalin13.kinopoisk.ui.theme.RatingColors
@@ -72,14 +72,14 @@ internal fun MediaCatalogItemCard(
                     modifier = Modifier.weight(1f),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleLarge
                 )
 
                 mediaCatalogItem.rating?.let { rating ->
                     Text(
                         text = rating.value,
                         maxLines = 1,
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleLarge,
                         color = rating.color
                     )
                 }
@@ -90,7 +90,7 @@ internal fun MediaCatalogItemCard(
                     text = additionalInfoText,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodySmall,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }

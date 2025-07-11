@@ -48,7 +48,7 @@ internal class MediaCatalogViewModel(
                     val flow =
                         createPager(query).flow
                             .map { pagingData ->
-                                pagingData.map { mapper.mapToUi(it) }
+                                pagingData.map { mapper.mapDomainToUiModel(it) }
                             }
                             .cachedIn(viewModelScope)
                     MediaCatalogState.Data(flow)
