@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -70,8 +69,7 @@ internal fun MediaCatalogListContent(
                     contentAlignment = Alignment.CenterEnd
                 ) {
                     HorizontalDivider(
-                        modifier = Modifier.fillMaxWidth(fraction = 0.75f),
-                        color = MaterialTheme.colorScheme.surfaceVariant
+                        modifier = Modifier.fillMaxWidth(fraction = 0.75f)
                     )
                 }
             }

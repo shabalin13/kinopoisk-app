@@ -42,10 +42,11 @@ internal fun MediaCatalogSearchBar(
         onValueChange = onQueryChange,
         modifier = modifier
             .focusRequester(focusRequester),
+        textStyle = MaterialTheme.typography.titleLarge,
         placeholder = {
             Text(
                 text = stringResource(R.string.search_query_placeholder),
-                style = MaterialTheme.typography.titleSmall,
+                style = MaterialTheme.typography.titleLarge,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
