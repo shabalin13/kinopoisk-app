@@ -23,8 +23,8 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.RatingUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
+import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
 import com.shabalin13.kinopoisk.ui.theme.RatingColors

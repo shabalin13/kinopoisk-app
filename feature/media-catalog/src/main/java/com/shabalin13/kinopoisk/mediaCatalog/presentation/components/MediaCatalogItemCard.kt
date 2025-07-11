@@ -24,8 +24,8 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import com.shabalin13.kinopoisk.mediaCatalog.R
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.RatingUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
+import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
 import com.shabalin13.kinopoisk.ui.theme.RatingColors
