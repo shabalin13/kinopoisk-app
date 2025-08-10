@@ -1,0 +1,6 @@
+package com.shabalin13.kinopoisk.mediaDetails.presentation.models
+
+internal data class MediaDetailsUiModel(
+    val id: Int,
+    val headerInfo: HeaderInfoUiModel,
+)
