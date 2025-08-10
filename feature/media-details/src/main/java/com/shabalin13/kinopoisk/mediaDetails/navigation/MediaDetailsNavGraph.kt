@@ -32,11 +32,13 @@ internal fun NavGraphBuilder.mediaDetailsNavGraph(
             val mediaId = arguments.getInt(MediaDetailsRoute.MEDIA_ID_KEY)
 
             val componentViewModel: MediaDetailsComponentViewModel = viewModel(
+                viewModelStoreOwner = parentEntry,
                 factory = MediaDetailsComponentViewModel.Factory(dependencies)
             )
 
             val viewModel = viewModel<MediaDetailsViewModel>(
-                factory = componentViewModel.component.mediaDetailsViewModelFactory().create(mediaId)
+                factory = componentViewModel.component.mediaDetailsViewModelFactory()
+                    .create(mediaId)
             )
             val state by viewModel.state.collectAsStateWithLifecycle()
 
