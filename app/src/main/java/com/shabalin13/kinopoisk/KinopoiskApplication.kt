@@ -9,7 +9,8 @@ import com.shabalin13.kinopoisk.di.FeatureDependencies
 class KinopoiskApplication : Application() {
     private val appComponent: AppComponent by lazy {
         DaggerAppComponent.factory().create(
-            DaggerDataComponent.factory().create()
+            DaggerDataComponent.factory().create(),
+            applicationContext
         )
     }
 
