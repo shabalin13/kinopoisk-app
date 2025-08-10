@@ -2,35 +2,99 @@ package com.shabalin13.kinopoisk.mediaDetails.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.shabalin13.kinopoisk.domain.mediaDetails.usecases.GetMediaDetailsUseCase
+import com.shabalin13.kinopoisk.mediaDetails.presentation.mappers.MediaDetailsMapper
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 internal class MediaDetailsViewModel(
     private val mediaId: Int,
     private val getMediaDetailsUseCase: GetMediaDetailsUseCase,
+    private val mapper: MediaDetailsMapper,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<MediaDetailsState?>(null)
+    private val _state = MutableStateFlow<MediaDetailsState>(MediaDetailsState.Loading)
     val state = _state.asStateFlow()
 
-    @Suppress("UnusedParameter")
+    init {
+        viewModelScope.launch {
+            _state.value = MediaDetailsState.Loading
+            val result = getMediaDetailsUseCase(mediaId)
+            _state.value = result.fold(
+                onSuccess = {
+                    withContext(Dispatchers.Default) {
+                        MediaDetailsState.Data(mapper.mapDomainToUiModel(it))
+                    }
+                },
+                onFailure = {
+                    MediaDetailsState.Error(it.message ?: "Error")
+                }
+            )
+        }
+    }
+
     fun handleIntent(intent: MediaDetailsIntent) {
-        TODO()
+        when (intent) {
+            MediaDetailsIntent.RateButtonClicked -> {
+                _state.update { state ->
+                    if (state is MediaDetailsState.Data) {
+                        val current = state.mediaDetails.headerInfo.actionButtonsInfo.isRated
+                        state.copy(
+                            mediaDetails = state.mediaDetails.copy(
+                                headerInfo = state.mediaDetails.headerInfo.copy(
+                                    actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
+                                        isRated = !current
+                                    )
+                                )
+                            )
+                        )
+                    } else {
+                        state
+                    }
+                }
+            }
+
+            MediaDetailsIntent.ToggleWatchlistButtonClicked -> {
+                _state.update { state ->
+                    if (state is MediaDetailsState.Data) {
+                        val current = state.mediaDetails.headerInfo.actionButtonsInfo.isInWatchlist
+                        state.copy(
+                            mediaDetails = state.mediaDetails.copy(
+                                headerInfo = state.mediaDetails.headerInfo.copy(
+                                    actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
+                                        isInWatchlist = !current
+                                    )
+                                )
+                            )
+                        )
+                    } else {
+                        state
+                    }
+                }
+            }
+
+            else -> Unit
+        }
     }
 
     class MediaDetailsViewModelFactory @AssistedInject constructor(
         @Assisted(MEDIA_ID_TAG) private val mediaId: Int,
         private val getMediaDetailsUseCase: GetMediaDetailsUseCase,
+        private val mapper: MediaDetailsMapper,
     ) : ViewModelProvider.Factory {
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MediaDetailsViewModel::class.java)
-            return MediaDetailsViewModel(mediaId, getMediaDetailsUseCase) as T
+            return MediaDetailsViewModel(mediaId, getMediaDetailsUseCase, mapper) as T
         }
 
         @AssistedFactory
