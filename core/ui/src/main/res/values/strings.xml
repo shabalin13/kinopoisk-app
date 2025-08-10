@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="duration_hours_short">%1$d ч</string>
+    <string name="duration_minutes_short">%1$d мин</string>
+</resources>
