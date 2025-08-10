@@ -52,4 +52,7 @@ dependencies {
 
     // Testing
     testImplementation(libs.junit)
+
+    // Javax Inject
+    implementation(libs.javax.inject)
 }
