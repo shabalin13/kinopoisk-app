@@ -5,4 +5,6 @@ internal sealed interface MediaDetailsIntent {
     data object ToggleWatchlistButtonClicked : MediaDetailsIntent
     data object ShareButtonClicked : MediaDetailsIntent
     data object ShowFullDescriptionButtonClicked : MediaDetailsIntent
+    data object ShowAllVideosButtonClicked : MediaDetailsIntent
+    data class VideoCardClicked(val videoUrl: String) : MediaDetailsIntent
 }

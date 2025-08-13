@@ -6,5 +6,6 @@
     <string name="share_button_title">Поделиться</string>
     <string name="from_year">с %1$d</string>
     <string name="show_full_description_button_title">Показать полное описание</string>
+    <string name="videos_section_header_title">Трейлеры и Тизеры</string>
     <string name="section_header_button_title">Все</string>
 </resources>
