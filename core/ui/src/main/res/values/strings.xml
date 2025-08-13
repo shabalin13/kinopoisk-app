@@ -2,4 +2,5 @@
 <resources>
     <string name="duration_hours_short">%1$d ч</string>
     <string name="duration_minutes_short">%1$d мин</string>
+    <string name="play_button_content_description">Играть</string>
 </resources>
