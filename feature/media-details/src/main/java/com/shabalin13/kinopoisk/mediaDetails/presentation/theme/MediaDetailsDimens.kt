@@ -11,4 +11,9 @@ internal object MediaDetailsDimens {
     object SectionHeader {
         val height = 50.dp
     }
+
+    object VideoCard {
+        val height = 180.dp
+        val width = 250.dp
+    }
 }
