@@ -7,4 +7,8 @@ internal object MediaDetailsDimens {
         val height = 315.dp
         val width = 210.dp
     }
+
+    object SectionHeader {
+        val height = 50.dp
+    }
 }
