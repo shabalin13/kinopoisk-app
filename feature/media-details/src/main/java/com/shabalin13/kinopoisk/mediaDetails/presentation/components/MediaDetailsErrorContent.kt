@@ -1,8 +1,10 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,12 +32,15 @@ internal fun MediaDetailsErrorContent(
 }
 
 @Preview(showSystemUi = true)
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsErrorContentPreview() {
     KinopoiskTheme {
-        MediaDetailsErrorContent(
-            state = MediaDetailsState.Error("Что-то пошло не так..."),
-            modifier = Modifier.fillMaxSize()
-        )
+        Surface {
+            MediaDetailsErrorContent(
+                state = MediaDetailsState.Error("Что-то пошло не так..."),
+                modifier = Modifier.fillMaxSize()
+            )
+        }
     }
 }

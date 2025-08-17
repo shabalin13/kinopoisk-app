@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -84,68 +86,74 @@ internal fun MediaDetailsHeaderSection(
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsHeaderSectionPreview() {
     KinopoiskTheme {
-        MediaDetailsHeaderSection(
-            headerInfo = HeaderInfoUiModel(
-                name = "Гарри Поттер и философский камень",
-                posterUrl = null,
-                metaInfo = MetaInfoUiModel(
-                    rating = RatingUiModel("8.3", RatingColors.high),
-                    alternativeName = "Harry Potter and the Sorcerer's Stone",
-                    summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
-                        "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
+        Surface {
+            MediaDetailsHeaderSection(
+                headerInfo = HeaderInfoUiModel(
+                    name = "Гарри Поттер и философский камень",
+                    posterUrl = null,
+                    metaInfo = MetaInfoUiModel(
+                        rating = RatingUiModel("8.3", RatingColors.high),
+                        alternativeName = "Harry Potter and the Sorcerer's Stone",
+                        summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
+                            "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
+                    ),
+                    descriptionInfo = DescriptionInfoUiModel(
+                        description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
+                            "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
+                            "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
+                            "день рождения Гарри все меняется...",
+                        ageRating = "12+"
+                    )
                 ),
-                descriptionInfo = DescriptionInfoUiModel(
-                    description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
-                        "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
-                        "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
-                        "день рождения Гарри все меняется...",
-                    ageRating = "12+"
-                )
-            ),
-            handleIntent = { intent ->
-                when (intent) {
-                    MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
-                    MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
-                    MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
-                    MediaDetailsIntent.ShowFullDescriptionButtonClicked ->
-                        println("Show full description button clicked")
+                handleIntent = { intent ->
+                    when (intent) {
+                        MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
+                        MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
+                        MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
+                        MediaDetailsIntent.ShowFullDescriptionButtonClicked ->
+                            println("Show full description button clicked")
 
-                    else -> Unit
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = Paddings.medium)
-        )
+                        else -> Unit
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = Paddings.medium)
+            )
+        }
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsHeaderSectionPreview2() {
     KinopoiskTheme {
-        MediaDetailsHeaderSection(
-            headerInfo = HeaderInfoUiModel(
-                name = "Гарри Поттер и философский камень"
-            ),
-            handleIntent = { intent ->
-                when (intent) {
-                    MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
-                    MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
-                    MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
-                    MediaDetailsIntent.ShowFullDescriptionButtonClicked ->
-                        println("Show full description button clicked")
+        Surface {
+            MediaDetailsHeaderSection(
+                headerInfo = HeaderInfoUiModel(
+                    name = "Гарри Поттер и философский камень"
+                ),
+                handleIntent = { intent ->
+                    when (intent) {
+                        MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
+                        MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
+                        MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
+                        MediaDetailsIntent.ShowFullDescriptionButtonClicked ->
+                            println("Show full description button clicked")
 
-                    else -> Unit
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = Paddings.medium)
-        )
+                        else -> Unit
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = Paddings.medium)
+            )
+        }
     }
 }

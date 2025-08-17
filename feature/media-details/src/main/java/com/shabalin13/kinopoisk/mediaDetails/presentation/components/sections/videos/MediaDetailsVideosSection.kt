@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -58,42 +60,45 @@ internal fun MediaDetailsVideosSection(
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsVideosSectionPreview() {
     KinopoiskTheme {
-        MediaDetailsVideosSection(
-            videosInfo = listOf(
-                VideoInfoUiModel(
-                    videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
-                    posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
-                    name = "Гарри Поттер и философский камень"
+        Surface {
+            MediaDetailsVideosSection(
+                videosInfo = listOf(
+                    VideoInfoUiModel(
+                        videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
+                        posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
+                        name = "Гарри Поттер и философский камень"
+                    ),
+                    VideoInfoUiModel(
+                        videoUrl = "https://www.youtube.com/embed/TXB31YDIJwk",
+                        posterUrl = "https://img.youtube.com/vi/TXB31YDIJwk/hqdefault.jpg",
+                        name = "Гарри Поттер и философский камень - Трейлер"
+                    ),
+                    VideoInfoUiModel(
+                        videoUrl = "https://www.youtube.com/embed/k71hjl3zWsA",
+                        posterUrl = "https://img.youtube.com/vi/k71hjl3zWsA/hqdefault.jpg",
+                        name = "Trailer 3"
+                    ),
+                    VideoInfoUiModel(
+                        videoUrl = "https://www.youtube.com/embed/Q61YhARNOPg",
+                        posterUrl = "https://img.youtube.com/vi/Q61YhARNOPg/hqdefault.jpg",
+                        name = "Trailer 2"
+                    ),
+                    VideoInfoUiModel(
+                        videoUrl = "https://www.youtube.com/embed/PbdM1db3JbY",
+                        posterUrl = "https://img.youtube.com/vi/PbdM1db3JbY/hqdefault.jpg",
+                        name = "Trailer"
+                    )
                 ),
-                VideoInfoUiModel(
-                    videoUrl = "https://www.youtube.com/embed/TXB31YDIJwk",
-                    posterUrl = "https://img.youtube.com/vi/TXB31YDIJwk/hqdefault.jpg",
-                    name = "Гарри Поттер и философский камень - Трейлер"
-                ),
-                VideoInfoUiModel(
-                    videoUrl = "https://www.youtube.com/embed/k71hjl3zWsA",
-                    posterUrl = "https://img.youtube.com/vi/k71hjl3zWsA/hqdefault.jpg",
-                    name = "Trailer 3"
-                ),
-                VideoInfoUiModel(
-                    videoUrl = "https://www.youtube.com/embed/Q61YhARNOPg",
-                    posterUrl = "https://img.youtube.com/vi/Q61YhARNOPg/hqdefault.jpg",
-                    name = "Trailer 2"
-                ),
-                VideoInfoUiModel(
-                    videoUrl = "https://www.youtube.com/embed/PbdM1db3JbY",
-                    posterUrl = "https://img.youtube.com/vi/PbdM1db3JbY/hqdefault.jpg",
-                    name = "Trailer"
-                )
-            ),
-            handleIntent = { videoUrl ->
-                println("VideoCard ($videoUrl) clicked")
-            },
-            modifier = Modifier.fillMaxWidth()
-        )
+                handleIntent = { videoUrl ->
+                    println("VideoCard ($videoUrl) clicked")
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }

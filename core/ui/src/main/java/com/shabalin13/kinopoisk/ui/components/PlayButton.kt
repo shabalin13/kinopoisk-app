@@ -1,10 +1,12 @@
 package com.shabalin13.kinopoisk.ui.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,7 +27,7 @@ fun PlayButton(
         modifier = modifier
             .size(42.dp)
             .background(
-                color = Color.Gray.copy(alpha = 0.5f),
+                color = Color.Gray.copy(alpha = 0.7f),
                 shape = CircleShape
             ),
         contentAlignment = Alignment.Center
@@ -39,10 +41,13 @@ fun PlayButton(
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFF000000)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PlayButtonPreview() {
     KinopoiskTheme {
-        PlayButton()
+        Surface {
+            PlayButton()
+        }
     }
 }

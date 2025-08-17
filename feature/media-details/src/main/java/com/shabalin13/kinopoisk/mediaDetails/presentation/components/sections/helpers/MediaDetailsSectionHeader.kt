@@ -1,11 +1,14 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.helpers
 
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -18,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.R
 import com.shabalin13.kinopoisk.mediaDetails.presentation.theme.MediaDetailsDimens
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
+import com.shabalin13.kinopoisk.ui.theme.Paddings
 import com.shabalin13.kinopoisk.ui.theme.Spacings
 
 @Composable
@@ -56,30 +60,38 @@ internal fun MediaDetailsSectionHeader(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsSectionHeaderPreview() {
     KinopoiskTheme {
-        MediaDetailsSectionHeader(
-            title = "Трейлеры и Тизеры",
-            onButtonClick = { println("Button clicked") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(MediaDetailsDimens.SectionHeader.height)
-        )
+        Surface {
+            MediaDetailsSectionHeader(
+                title = "Трейлеры и Тизеры",
+                onButtonClick = { println("Button clicked") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(MediaDetailsDimens.SectionHeader.height)
+                    .padding(horizontal = Paddings.medium)
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsSectionHeaderPreview2() {
     KinopoiskTheme {
-        MediaDetailsSectionHeader(
-            title = "Очень длинное название для конкретной секции",
-            onButtonClick = { println("Button clicked") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(MediaDetailsDimens.SectionHeader.height)
-        )
+        Surface {
+            MediaDetailsSectionHeader(
+                title = "Очень длинное название для конкретной секции",
+                onButtonClick = { println("Button clicked") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(MediaDetailsDimens.SectionHeader.height)
+                    .padding(horizontal = Paddings.medium)
+            )
+        }
     }
 }

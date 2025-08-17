@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,60 +59,63 @@ internal fun MediaDetailsDataContent(
 
 @Suppress("MagicNumber")
 @Preview(showSystemUi = true)
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsDataContentPreview() {
     KinopoiskTheme {
-        MediaDetailsDataContent(
-            state = MediaDetailsState.Data(
-                MediaDetailsUiModel(
-                    689,
-                    headerInfo = HeaderInfoUiModel(
-                        name = "Гарри Поттер и философский камень",
-                        posterUrl = null,
-                        metaInfo = MetaInfoUiModel(
-                            rating = RatingUiModel("8.3", RatingColors.high),
-                            alternativeName = "Harry Potter and the Sorcerer's Stone",
-                            summary = "2001, фэнтэзи, приключения\nВеликобритания, 2 ч 32 мин, 12+",
+        Surface {
+            MediaDetailsDataContent(
+                state = MediaDetailsState.Data(
+                    MediaDetailsUiModel(
+                        689,
+                        headerInfo = HeaderInfoUiModel(
+                            name = "Гарри Поттер и философский камень",
+                            posterUrl = null,
+                            metaInfo = MetaInfoUiModel(
+                                rating = RatingUiModel("8.3", RatingColors.high),
+                                alternativeName = "Harry Potter and the Sorcerer's Stone",
+                                summary = "2001, фэнтэзи, приключения\nВеликобритания, 2 ч 32 мин, 12+",
+                            ),
+                            descriptionInfo = DescriptionInfoUiModel(
+                                description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
+                                    "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
+                                    "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
+                                    "день рождения Гарри все меняется...",
+                                ageRating = "12+"
+                            )
                         ),
-                        descriptionInfo = DescriptionInfoUiModel(
-                            description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
-                                "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
-                                "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
-                                "день рождения Гарри все меняется...",
-                            ageRating = "12+"
-                        )
-                    ),
-                    videosInfo = listOf(
-                        VideoInfoUiModel(
-                            videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
-                            posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
-                            name = "Гарри Поттер и философский камень"
+                        videosInfo = listOf(
+                            VideoInfoUiModel(
+                                videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
+                                posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
+                                name = "Гарри Поттер и философский камень"
+                            ),
+                            VideoInfoUiModel(
+                                videoUrl = "https://www.youtube.com/embed/TXB31YDIJwk",
+                                posterUrl = "https://img.youtube.com/vi/TXB31YDIJwk/hqdefault.jpg",
+                                name = "Гарри Поттер и философский камень - Трейлер"
+                            ),
+                            VideoInfoUiModel(
+                                videoUrl = "https://www.youtube.com/embed/k71hjl3zWsA",
+                                posterUrl = "https://img.youtube.com/vi/k71hjl3zWsA/hqdefault.jpg",
+                                name = "Trailer 3"
+                            ),
+                            VideoInfoUiModel(
+                                videoUrl = "https://www.youtube.com/embed/Q61YhARNOPg",
+                                posterUrl = "https://img.youtube.com/vi/Q61YhARNOPg/hqdefault.jpg",
+                                name = "Trailer 2"
+                            ),
+                            VideoInfoUiModel(
+                                videoUrl = "https://www.youtube.com/embed/PbdM1db3JbY",
+                                posterUrl = "https://img.youtube.com/vi/PbdM1db3JbY/hqdefault.jpg",
+                                name = "Trailer"
+                            )
                         ),
-                        VideoInfoUiModel(
-                            videoUrl = "https://www.youtube.com/embed/TXB31YDIJwk",
-                            posterUrl = "https://img.youtube.com/vi/TXB31YDIJwk/hqdefault.jpg",
-                            name = "Гарри Поттер и философский камень - Трейлер"
-                        ),
-                        VideoInfoUiModel(
-                            videoUrl = "https://www.youtube.com/embed/k71hjl3zWsA",
-                            posterUrl = "https://img.youtube.com/vi/k71hjl3zWsA/hqdefault.jpg",
-                            name = "Trailer 3"
-                        ),
-                        VideoInfoUiModel(
-                            videoUrl = "https://www.youtube.com/embed/Q61YhARNOPg",
-                            posterUrl = "https://img.youtube.com/vi/Q61YhARNOPg/hqdefault.jpg",
-                            name = "Trailer 2"
-                        ),
-                        VideoInfoUiModel(
-                            videoUrl = "https://www.youtube.com/embed/PbdM1db3JbY",
-                            posterUrl = "https://img.youtube.com/vi/PbdM1db3JbY/hqdefault.jpg",
-                            name = "Trailer"
-                        )
-                    ),
-                )
-            ),
-            handleIntent = { },
-            modifier = Modifier.fillMaxSize()
-        )
+                    )
+                ),
+                handleIntent = { },
+                modifier = Modifier.fillMaxSize()
+            )
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos
 
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -86,20 +88,23 @@ internal fun MediaDetailsVideoCard(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsVideoCardPreview() {
     KinopoiskTheme {
-        MediaDetailsVideoCard(
-            videoInfo = VideoInfoUiModel(
-                videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
-                posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
-                name = "Гарри Поттер и философский камень"
-            ),
-            onCardClick = { println("Card clicked") },
-            modifier = Modifier
-                .width(MediaDetailsDimens.VideoCard.width)
-                .height(MediaDetailsDimens.VideoCard.height)
-        )
+        Surface {
+            MediaDetailsVideoCard(
+                videoInfo = VideoInfoUiModel(
+                    videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
+                    posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
+                    name = "Гарри Поттер и философский камень"
+                ),
+                onCardClick = { println("Card clicked") },
+                modifier = Modifier
+                    .width(MediaDetailsDimens.VideoCard.width)
+                    .height(MediaDetailsDimens.VideoCard.height)
+            )
+        }
     }
 }

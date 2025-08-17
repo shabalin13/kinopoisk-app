@@ -1,9 +1,11 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -59,62 +61,74 @@ internal fun HeaderMetaInfo(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderMetaInfoPreview() {
     KinopoiskTheme {
-        HeaderMetaInfo(
-            metaInfo = MetaInfoUiModel(
-                rating = RatingUiModel("8.3", RatingColors.high),
-                alternativeName = "Harry Potter and the Sorcerer's Stone",
-                summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
-                    "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+        Surface {
+            HeaderMetaInfo(
+                metaInfo = MetaInfoUiModel(
+                    rating = RatingUiModel("8.3", RatingColors.high),
+                    alternativeName = "Harry Potter and the Sorcerer's Stone",
+                    summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
+                        "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderMetaInfoPreview2() {
     KinopoiskTheme {
-        HeaderMetaInfo(
-            metaInfo = MetaInfoUiModel(
-                alternativeName = "Harry Potter and the Sorcerer's Stone",
-                summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
-                    "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+        Surface {
+            HeaderMetaInfo(
+                metaInfo = MetaInfoUiModel(
+                    alternativeName = "Harry Potter and the Sorcerer's Stone",
+                    summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
+                        "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderMetaInfoPreview3() {
     KinopoiskTheme {
-        HeaderMetaInfo(
-            metaInfo = MetaInfoUiModel(
-                rating = RatingUiModel("8.3", RatingColors.high),
-                summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
-                    "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+        Surface {
+            HeaderMetaInfo(
+                metaInfo = MetaInfoUiModel(
+                    rating = RatingUiModel("8.3", RatingColors.high),
+                    summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
+                        "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderMetaInfoPreview4() {
     KinopoiskTheme {
-        HeaderMetaInfo(
-            metaInfo = MetaInfoUiModel(
-                rating = RatingUiModel("8.3", RatingColors.high),
-                alternativeName = "Harry Potter and the Sorcerer's Stone",
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+        Surface {
+            HeaderMetaInfo(
+                metaInfo = MetaInfoUiModel(
+                    rating = RatingUiModel("8.3", RatingColors.high),
+                    alternativeName = "Harry Potter and the Sorcerer's Stone",
+                ),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }

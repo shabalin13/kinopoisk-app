@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.ui.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
@@ -59,30 +61,36 @@ fun ActionButton(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun ActionButtonPreview() {
     KinopoiskTheme {
-        ActionButton(
-            icon = Icons.Outlined.Star,
-            text = "Оценить",
-            onActionClick = { },
-            modifier = Modifier
-        )
+        Surface {
+            ActionButton(
+                icon = Icons.Outlined.Star,
+                text = "Оценить",
+                onActionClick = { },
+                modifier = Modifier
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun ActionButtonPreview2() {
     KinopoiskTheme {
-        ActionButton(
-            icon = Icons.Outlined.Star,
-            text = "Оценить",
-            onActionClick = { },
-            modifier = Modifier,
-            isSelected = true,
-            selectedIcon = Icons.Filled.Star
-        )
+        Surface {
+            ActionButton(
+                icon = Icons.Outlined.Star,
+                text = "Оценить",
+                onActionClick = { },
+                modifier = Modifier,
+                isSelected = true,
+                selectedIcon = Icons.Filled.Star
+            )
+        }
     }
 }

@@ -1,9 +1,11 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -51,47 +53,53 @@ internal fun HeaderActionButtons(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderActionButtonsPreview() {
     KinopoiskTheme {
-        HeaderActionButtons(
-            actionButtonsInfo = ActionButtonsInfoUiModel(),
-            handleIntent = { intent ->
-                when (intent) {
-                    MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
-                    MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
-                    MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
-                    else -> Unit
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = Paddings.small)
-        )
+        Surface {
+            HeaderActionButtons(
+                actionButtonsInfo = ActionButtonsInfoUiModel(),
+                handleIntent = { intent ->
+                    when (intent) {
+                        MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
+                        MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
+                        MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
+                        else -> Unit
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = Paddings.small)
+            )
+        }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderActionButtonsPreview2() {
     KinopoiskTheme {
-        HeaderActionButtons(
-            actionButtonsInfo = ActionButtonsInfoUiModel(
-                isRated = true,
-                isInWatchlist = true
-            ),
-            handleIntent = { intent ->
-                when (intent) {
-                    MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
-                    MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
-                    MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
-                    else -> Unit
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = Paddings.small)
-        )
+        Surface {
+            HeaderActionButtons(
+                actionButtonsInfo = ActionButtonsInfoUiModel(
+                    isRated = true,
+                    isInWatchlist = true
+                ),
+                handleIntent = { intent ->
+                    when (intent) {
+                        MediaDetailsIntent.RateButtonClicked -> println("Rate button clicked")
+                        MediaDetailsIntent.ShareButtonClicked -> println("Share button clicked")
+                        MediaDetailsIntent.ToggleWatchlistButtonClicked -> println("Toggle watchlist button clicked")
+                        else -> Unit
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = Paddings.small)
+            )
+        }
     }
 }

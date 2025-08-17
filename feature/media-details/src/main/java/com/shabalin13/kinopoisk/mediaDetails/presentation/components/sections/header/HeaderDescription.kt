@@ -1,9 +1,11 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -41,22 +43,25 @@ internal fun HeaderDescription(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun HeaderDescriptionPreview() {
     KinopoiskTheme {
-        HeaderDescription(
-            descriptionInfo = DescriptionInfoUiModel(
-                description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
-                    "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
-                    "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
-                    "день рождения Гарри все меняется...",
-                ageRating = "12+"
-            ),
-            onButtonClick = { println("Show full description button clicked") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = Paddings.small)
-        )
+        Surface {
+            HeaderDescription(
+                descriptionInfo = DescriptionInfoUiModel(
+                    description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
+                        "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
+                        "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
+                        "день рождения Гарри все меняется...",
+                    ageRating = "12+"
+                ),
+                onButtonClick = { println("Show full description button clicked") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = Paddings.small)
+            )
+        }
     }
 }

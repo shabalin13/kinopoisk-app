@@ -1,8 +1,10 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,11 +24,14 @@ internal fun MediaDetailsLoadingContent(
 }
 
 @Preview(showSystemUi = true)
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 internal fun MediaDetailsLoadingContentPreview() {
     KinopoiskTheme {
-        MediaDetailsLoadingContent(
-            modifier = Modifier.fillMaxSize()
-        )
+        Surface {
+            MediaDetailsLoadingContent(
+                modifier = Modifier.fillMaxSize()
+            )
+        }
     }
 }
