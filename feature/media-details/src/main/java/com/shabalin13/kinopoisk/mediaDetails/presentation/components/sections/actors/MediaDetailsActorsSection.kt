@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.R
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsIntent
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.helpers.MediaDetailsPersonCard
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.helpers.MediaDetailsSectionHeader
 import com.shabalin13.kinopoisk.mediaDetails.presentation.config.MediaDetailsConfig
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
@@ -44,7 +45,10 @@ internal fun MediaDetailsActorsSection(
                 .padding(horizontal = Paddings.medium)
         )
 
-        val rowsCount = MediaDetailsConfig.ACTORS_SECTION_ROWS_COUNT
+        val rowsCount = minOf(
+            actorsInfo.actors.size,
+            MediaDetailsConfig.ACTORS_SECTION_ROWS_COUNT
+        )
 
         LazyHorizontalGrid(
             rows = GridCells.Fixed(rowsCount),
@@ -192,6 +196,31 @@ internal fun MediaDetailsActorsSectionPreview2() {
                         )
                     ),
                     isMore = true
+                ),
+                handleIntent = {},
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
+}
+
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+internal fun MediaDetailsActorsSectionPreview3() {
+    KinopoiskTheme {
+        Surface {
+            MediaDetailsActorsSection(
+                actorsInfo = ActorsInfoUiModel(
+                    actors = listOf(
+                        PersonInfoUiModel(
+                            id = 40778,
+                            name = "Дэниэл Рэдклифф",
+                            photoUrl = "https://st.kp.yandex.net/images/actor_iphone/iphone360_40778.jpg",
+                            additionalInfo = "Harry Potter"
+                        ),
+                    ),
+                    isMore = false
                 ),
                 handleIntent = {},
                 modifier = Modifier.fillMaxWidth()

@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.actors
+package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.helpers
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
