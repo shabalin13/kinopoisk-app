@@ -8,4 +8,5 @@
     <string name="show_full_description_button_title">Показать полное описание</string>
     <string name="videos_section_header_title">Трейлеры и Тизеры</string>
     <string name="section_header_button_title">Все</string>
+    <string name="actors_section_header_title">Актеры</string>
 </resources>
