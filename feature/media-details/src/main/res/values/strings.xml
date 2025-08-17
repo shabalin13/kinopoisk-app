@@ -9,4 +9,5 @@
     <string name="videos_section_header_title">Трейлеры и Тизеры</string>
     <string name="section_header_button_title">Все</string>
     <string name="actors_section_header_title">Актеры</string>
+    <string name="contributors_section_header_title">Съемочная группа</string>
 </resources>

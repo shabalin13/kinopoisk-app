@@ -9,4 +9,5 @@ internal sealed interface MediaDetailsIntent {
     data class VideoCardClicked(val videoUrl: String) : MediaDetailsIntent
     data object ShowAllActorsButtonClicked : MediaDetailsIntent
     data class PersonCardClicked(val personId: Int) : MediaDetailsIntent
+    data object ShowAllContributorsButtonClicked : MediaDetailsIntent
 }
