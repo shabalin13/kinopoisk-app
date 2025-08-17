@@ -2,6 +2,7 @@ package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetails
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActor
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActorProfession
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.PersonInfoUiModel
@@ -10,6 +11,7 @@ import javax.inject.Inject
 
 internal class MediaDetailsMapper @Inject constructor(
     private val headerMapper: MediaDetailsHeaderMapper,
+    private val contributorsMapper: MediaDetailsContributorsMapper,
 ) {
     fun mapDomainToUiModel(mediaDetails: MediaDetails): MediaDetailsUiModel {
         return MediaDetailsUiModel(
@@ -22,15 +24,18 @@ internal class MediaDetailsMapper @Inject constructor(
                     name = it.name
                 )
             }.takeIf { it.isNotEmpty() },
-            actorsInfo = mapActorsToActorsInfo(mediaDetails.actors)
+            actorsInfo = mapActorsToActorsInfo(mediaDetails.actors),
+            contributorsInfo = contributorsMapper.mapToContributorsInfo(mediaDetails.contributors)
         )
     }
 
     private fun mapActorsToActorsInfo(actors: List<MediaDetailsActor>): ActorsInfoUiModel? {
         if (actors.isEmpty()) return null
 
+        val actorsFiltered = actors.filter { it.profession == MediaDetailsActorProfession.ACTOR }
+
         return ActorsInfoUiModel(
-            actors = actors.take(ActorsInfoUiModel.MAX_VISIBLE).map { actor ->
+            actors = actorsFiltered.take(ActorsInfoUiModel.MAX_VISIBLE).map { actor ->
                 PersonInfoUiModel(
                     id = actor.id,
                     name = actor.name,
@@ -38,7 +43,7 @@ internal class MediaDetailsMapper @Inject constructor(
                     additionalInfo = actor.characterName
                 )
             },
-            isMore = actors.size > ActorsInfoUiModel.MAX_VISIBLE
+            isMore = actorsFiltered.size > ActorsInfoUiModel.MAX_VISIBLE
         )
     }
 }

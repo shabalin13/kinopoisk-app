@@ -5,4 +5,5 @@ internal data class MediaDetailsUiModel(
     val headerInfo: HeaderInfoUiModel,
     val videosInfo: List<VideoInfoUiModel>? = null,
     val actorsInfo: ActorsInfoUiModel? = null,
+    val contributorsInfo: ContributorsInfoUiModel? = null,
 )
