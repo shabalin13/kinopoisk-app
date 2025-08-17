@@ -16,4 +16,14 @@ internal object MediaDetailsDimens {
         val height = 180.dp
         val width = 250.dp
     }
+
+    object PersonCard {
+        val height = 105.dp
+        val width = 235.dp
+
+        object PersonPhoto {
+            val height = PersonCard.height
+            val width = 70.dp
+        }
+    }
 }
