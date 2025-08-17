@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsIntent
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsState
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.actors.MediaDetailsActorsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header.MediaDetailsHeaderSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos.MediaDetailsVideosSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
@@ -50,6 +51,14 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.videosInfo?.let { videosInfo ->
             MediaDetailsVideosSection(
                 videosInfo = videosInfo,
+                handleIntent = handleIntent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        state.mediaDetails.actorsInfo?.let { actorsInfo ->
+            MediaDetailsActorsSection(
+                actorsInfo = actorsInfo,
                 handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )

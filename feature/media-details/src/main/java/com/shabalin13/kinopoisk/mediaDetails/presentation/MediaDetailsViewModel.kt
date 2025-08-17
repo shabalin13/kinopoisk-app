@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -79,6 +80,14 @@ internal class MediaDetailsViewModel(
                         state
                     }
                 }
+            }
+
+            MediaDetailsIntent.ShowAllActorsButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllActorsButtonClicked")
+            }
+
+            is MediaDetailsIntent.PersonCardClicked -> {
+                Log.d("MediaDetailsIntent", "PersonCardClicked #${intent.personId}")
             }
 
             else -> Unit
