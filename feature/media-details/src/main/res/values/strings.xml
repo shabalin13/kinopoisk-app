@@ -18,4 +18,5 @@
     <string name="designer_profession_title">Художник</string>
     <string name="editor_profession_title">Монтажер</string>
     <string name="facts_section_header_title">Интересные факты</string>
+    <string name="bloopers_section_header_title">Забавные ляпы</string>
 </resources>
