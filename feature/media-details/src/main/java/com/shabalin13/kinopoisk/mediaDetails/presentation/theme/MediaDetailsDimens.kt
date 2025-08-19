@@ -26,4 +26,11 @@ internal object MediaDetailsDimens {
             val width = 70.dp
         }
     }
+
+    object FactsSection {
+        object NoteCard {
+            val height = 180.dp
+            val width = 300.dp
+        }
+    }
 }
