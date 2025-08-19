@@ -4,4 +4,5 @@
     <string name="duration_minutes_short">%1$d мин</string>
     <string name="play_button_content_description">Играть</string>
     <string name="show_all_card_title">Показать все</string>
+    <string name="spoiler_card_title">Тут есть спойлеры!</string>
 </resources>
