@@ -44,42 +44,23 @@ internal class MediaDetailsViewModel(
 
     fun handleIntent(intent: MediaDetailsIntent) {
         when (intent) {
-            MediaDetailsIntent.RateButtonClicked -> {
-                _state.update { state ->
-                    if (state is MediaDetailsState.Data) {
-                        val current = state.mediaDetails.headerInfo.actionButtonsInfo.isRated
-                        state.copy(
-                            mediaDetails = state.mediaDetails.copy(
-                                headerInfo = state.mediaDetails.headerInfo.copy(
-                                    actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
-                                        isRated = !current
-                                    )
-                                )
-                            )
-                        )
-                    } else {
-                        state
-                    }
-                }
+            MediaDetailsIntent.RateButtonClicked -> onRateButtonClicked()
+            MediaDetailsIntent.ToggleWatchlistButtonClicked -> onToggleWatchlistButtonClicked()
+
+            MediaDetailsIntent.ShareButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShareButtonClicked")
             }
 
-            MediaDetailsIntent.ToggleWatchlistButtonClicked -> {
-                _state.update { state ->
-                    if (state is MediaDetailsState.Data) {
-                        val current = state.mediaDetails.headerInfo.actionButtonsInfo.isInWatchlist
-                        state.copy(
-                            mediaDetails = state.mediaDetails.copy(
-                                headerInfo = state.mediaDetails.headerInfo.copy(
-                                    actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
-                                        isInWatchlist = !current
-                                    )
-                                )
-                            )
-                        )
-                    } else {
-                        state
-                    }
-                }
+            MediaDetailsIntent.ShowFullDescriptionButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowFullDescriptionButtonClicked")
+            }
+
+            MediaDetailsIntent.ShowAllVideosButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllVideosButtonClicked")
+            }
+
+            is MediaDetailsIntent.VideoCardClicked -> {
+                Log.d("MediaDetailsIntent", "VideoCardClicked ${intent.videoUrl}")
             }
 
             MediaDetailsIntent.ShowAllActorsButtonClicked -> {
@@ -102,7 +83,51 @@ internal class MediaDetailsViewModel(
                 Log.d("MediaDetailsIntent", "FactCardClicked ${intent.factText}")
             }
 
-            else -> Unit
+            MediaDetailsIntent.ShowAllBloopersButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllBloopersButtonClicked")
+            }
+
+            is MediaDetailsIntent.BlooperCardClicked -> {
+                Log.d("MediaDetailsIntent", "BlooperCardClicked ${intent.blooperText}")
+            }
+        }
+    }
+
+    private fun onRateButtonClicked() {
+        _state.update { state ->
+            if (state is MediaDetailsState.Data) {
+                val current = state.mediaDetails.headerInfo.actionButtonsInfo.isRated
+                state.copy(
+                    mediaDetails = state.mediaDetails.copy(
+                        headerInfo = state.mediaDetails.headerInfo.copy(
+                            actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
+                                isRated = !current
+                            )
+                        )
+                    )
+                )
+            } else {
+                state
+            }
+        }
+    }
+
+    private fun onToggleWatchlistButtonClicked() {
+        _state.update { state ->
+            if (state is MediaDetailsState.Data) {
+                val current = state.mediaDetails.headerInfo.actionButtonsInfo.isInWatchlist
+                state.copy(
+                    mediaDetails = state.mediaDetails.copy(
+                        headerInfo = state.mediaDetails.headerInfo.copy(
+                            actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
+                                isInWatchlist = !current
+                            )
+                        )
+                    )
+                )
+            } else {
+                state
+            }
         }
     }
 

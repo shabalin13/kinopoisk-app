@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsIntent
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsState
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.actors.MediaDetailsActorsSection
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.bloopers.MediaDetailsBloopersSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.contributors.MediaDetailsContributorsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.facts.MediaDetailsFactsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header.MediaDetailsHeaderSection
@@ -77,6 +78,14 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.factsInfo?.let { factsInfo ->
             MediaDetailsFactsSection(
                 factsInfo = factsInfo,
+                handleIntent = handleIntent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        state.mediaDetails.bloopersInfo?.let { bloopersInfo ->
+            MediaDetailsBloopersSection(
+                bloopersInfo = bloopersInfo,
                 handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )

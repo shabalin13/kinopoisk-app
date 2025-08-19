@@ -3,8 +3,10 @@ package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetails
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActor
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActorProfession
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsBlooper
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsFact
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.BloopersInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.FactsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.NoteInfoUiModel
@@ -29,7 +31,8 @@ internal class MediaDetailsMapper @Inject constructor(
             }.takeIf { it.isNotEmpty() },
             actorsInfo = mapActorsToActorsInfo(mediaDetails.actors),
             contributorsInfo = contributorsMapper.mapToContributorsInfo(mediaDetails.contributors),
-            factsInfo = mapFactsToFactsInfo(mediaDetails.facts)
+            factsInfo = mapFactsToFactsInfo(mediaDetails.facts),
+            bloopersInfo = mapBloopersToBloopersInfo(mediaDetails.bloopers)
         )
     }
 
@@ -62,6 +65,20 @@ internal class MediaDetailsMapper @Inject constructor(
                 )
             },
             isMore = facts.size > FactsInfoUiModel.MAX_VISIBLE
+        )
+    }
+
+    private fun mapBloopersToBloopersInfo(bloopers: List<MediaDetailsBlooper>): BloopersInfoUiModel? {
+        if (bloopers.isEmpty()) return null
+
+        return BloopersInfoUiModel(
+            bloopers = bloopers.take(BloopersInfoUiModel.MAX_VISIBLE).map { blooper ->
+                NoteInfoUiModel(
+                    text = blooper.value,
+                    isSpoiler = blooper.isSpoiler
+                )
+            },
+            isMore = bloopers.size > BloopersInfoUiModel.MAX_VISIBLE
         )
     }
 }

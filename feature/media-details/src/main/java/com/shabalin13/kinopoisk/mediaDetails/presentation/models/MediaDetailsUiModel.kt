@@ -7,4 +7,5 @@ internal data class MediaDetailsUiModel(
     val actorsInfo: ActorsInfoUiModel? = null,
     val contributorsInfo: ContributorsInfoUiModel? = null,
     val factsInfo: FactsInfoUiModel? = null,
+    val bloopersInfo: BloopersInfoUiModel? = null,
 )
