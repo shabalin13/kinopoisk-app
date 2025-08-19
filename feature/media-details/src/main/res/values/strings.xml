@@ -10,7 +10,6 @@
     <string name="section_header_button_title">Все</string>
     <string name="actors_section_header_title">Актеры</string>
     <string name="contributors_section_header_title">Съемочная группа</string>
-
     <string name="director_profession_title">Режиссер</string>
     <string name="producer_profession_title">Продюсер</string>
     <string name="writer_profession_title">Сценарист</string>
@@ -18,4 +17,5 @@
     <string name="composer_profession_title">Композитор</string>
     <string name="designer_profession_title">Художник</string>
     <string name="editor_profession_title">Монтажер</string>
+    <string name="facts_section_header_title">Интересные факты</string>
 </resources>

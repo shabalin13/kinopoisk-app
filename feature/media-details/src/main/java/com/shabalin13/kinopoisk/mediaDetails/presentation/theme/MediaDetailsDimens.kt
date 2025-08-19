@@ -32,5 +32,9 @@ internal object MediaDetailsDimens {
             val height = 180.dp
             val width = 300.dp
         }
+
+        object ShowAllCard {
+            val width = 150.dp
+        }
     }
 }
