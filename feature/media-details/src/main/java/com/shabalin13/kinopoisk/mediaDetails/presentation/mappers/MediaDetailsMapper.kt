@@ -3,8 +3,11 @@ package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetails
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActor
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActorProfession
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsFact
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.FactsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.NoteInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.PersonInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
 import javax.inject.Inject
@@ -25,7 +28,8 @@ internal class MediaDetailsMapper @Inject constructor(
                 )
             }.takeIf { it.isNotEmpty() },
             actorsInfo = mapActorsToActorsInfo(mediaDetails.actors),
-            contributorsInfo = contributorsMapper.mapToContributorsInfo(mediaDetails.contributors)
+            contributorsInfo = contributorsMapper.mapToContributorsInfo(mediaDetails.contributors),
+            factsInfo = mapFactsToFactsInfo(mediaDetails.facts)
         )
     }
 
@@ -44,6 +48,20 @@ internal class MediaDetailsMapper @Inject constructor(
                 )
             },
             isMore = actorsFiltered.size > ActorsInfoUiModel.MAX_VISIBLE
+        )
+    }
+
+    private fun mapFactsToFactsInfo(facts: List<MediaDetailsFact>): FactsInfoUiModel? {
+        if (facts.isEmpty()) return null
+
+        return FactsInfoUiModel(
+            facts = facts.take(FactsInfoUiModel.MAX_VISIBLE).map { fact ->
+                NoteInfoUiModel(
+                    text = fact.value,
+                    isSpoiler = fact.isSpoiler
+                )
+            },
+            isMore = facts.size > FactsInfoUiModel.MAX_VISIBLE
         )
     }
 }

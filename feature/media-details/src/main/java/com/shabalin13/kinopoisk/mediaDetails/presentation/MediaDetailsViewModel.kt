@@ -94,6 +94,14 @@ internal class MediaDetailsViewModel(
                 Log.d("MediaDetailsIntent", "ShowAllContributorsButtonClicked")
             }
 
+            MediaDetailsIntent.ShowAllFactsButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllFactsButtonClicked")
+            }
+
+            is MediaDetailsIntent.FactCardClicked -> {
+                Log.d("MediaDetailsIntent", "FactCardClicked ${intent.factText}")
+            }
+
             else -> Unit
         }
     }
