@@ -48,4 +48,14 @@ internal object MediaDetailsDimens {
             val width = 150.dp
         }
     }
+
+    object MediaItemCard {
+        val height = 280.dp
+        val width = 140.dp
+
+        object Poster {
+            val height = 210.dp
+            val width = MediaItemCard.width
+        }
+    }
 }
