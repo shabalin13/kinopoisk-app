@@ -42,6 +42,7 @@ internal class MediaDetailsViewModel(
         }
     }
 
+    @Suppress("CyclomaticComplexMethod")
     fun handleIntent(intent: MediaDetailsIntent) {
         when (intent) {
             MediaDetailsIntent.RateButtonClicked -> onRateButtonClicked()
@@ -89,6 +90,14 @@ internal class MediaDetailsViewModel(
 
             is MediaDetailsIntent.BlooperCardClicked -> {
                 Log.d("MediaDetailsIntent", "BlooperCardClicked ${intent.blooperText}")
+            }
+
+            MediaDetailsIntent.ShowAllLinkedMediaItemsButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllLinkedMediaItemsButtonClicked")
+            }
+
+            is MediaDetailsIntent.LinkedMediaItemCardClicked -> {
+                Log.d("MediaDetailsIntent", "LinkedMediaItemCardClicked ${intent.mediaId}")
             }
         }
     }

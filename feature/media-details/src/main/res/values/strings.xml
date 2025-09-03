@@ -19,4 +19,5 @@
     <string name="editor_profession_title">Монтажер</string>
     <string name="facts_section_header_title">Интересные факты</string>
     <string name="bloopers_section_header_title">Забавные ляпы</string>
+    <string name="linked_media_items_section_header_title">Сиквелы и приквелы</string>
 </resources>
