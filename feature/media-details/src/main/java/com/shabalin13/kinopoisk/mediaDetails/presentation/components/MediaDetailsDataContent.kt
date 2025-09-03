@@ -19,6 +19,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.bl
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.contributors.MediaDetailsContributorsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.facts.MediaDetailsFactsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header.MediaDetailsHeaderSection
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.linkedMediaItems.MediaDetailsLinkedMediaItemsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos.MediaDetailsVideosSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiModel
@@ -86,6 +87,14 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.bloopersInfo?.let { bloopersInfo ->
             MediaDetailsBloopersSection(
                 bloopersInfo = bloopersInfo,
+                handleIntent = handleIntent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        state.mediaDetails.linkedMediaItemsInfo?.let { linkedMediaItemsInfo ->
+            MediaDetailsLinkedMediaItemsSection(
+                linkedMediaItemsInfo = linkedMediaItemsInfo,
                 handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )

@@ -5,13 +5,17 @@ import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActor
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActorProfession
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsBlooper
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsFact
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsLinkedMediaItem
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.BloopersInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.FactsInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.LinkedMediaItemsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaItemInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.NoteInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.PersonInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
+import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import javax.inject.Inject
 
 internal class MediaDetailsMapper @Inject constructor(
@@ -32,7 +36,8 @@ internal class MediaDetailsMapper @Inject constructor(
             actorsInfo = mapActorsToActorsInfo(mediaDetails.actors),
             contributorsInfo = contributorsMapper.mapToContributorsInfo(mediaDetails.contributors),
             factsInfo = mapFactsToFactsInfo(mediaDetails.facts),
-            bloopersInfo = mapBloopersToBloopersInfo(mediaDetails.bloopers)
+            bloopersInfo = mapBloopersToBloopersInfo(mediaDetails.bloopers),
+            linkedMediaItemsInfo = mapLinkedMediaItemsToLinkedMediaItemsInfo(mediaDetails.linkedMediaItems)
         )
     }
 
@@ -79,6 +84,26 @@ internal class MediaDetailsMapper @Inject constructor(
                 )
             },
             isMore = bloopers.size > BloopersInfoUiModel.MAX_VISIBLE
+        )
+    }
+
+    private fun mapLinkedMediaItemsToLinkedMediaItemsInfo(
+        linkedMediaItems: List<MediaDetailsLinkedMediaItem>,
+    ): LinkedMediaItemsInfoUiModel? {
+        if (linkedMediaItems.isEmpty()) return null
+
+        return LinkedMediaItemsInfoUiModel(
+            linkedMediaItems = linkedMediaItems.take(LinkedMediaItemsInfoUiModel.MAX_VISIBLE)
+                .map { linkedMediaItem ->
+                    MediaItemInfoUiModel(
+                        id = linkedMediaItem.id,
+                        name = linkedMediaItem.name,
+                        posterPreviewUrl = linkedMediaItem.posterPreviewUrl,
+                        year = linkedMediaItem.year,
+                        rating = linkedMediaItem.rating?.run(RatingUiModel::from)
+                    )
+                },
+            isMore = linkedMediaItems.size > LinkedMediaItemsInfoUiModel.MAX_VISIBLE
         )
     }
 }

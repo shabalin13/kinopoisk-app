@@ -8,4 +8,5 @@ internal data class MediaDetailsUiModel(
     val contributorsInfo: ContributorsInfoUiModel? = null,
     val factsInfo: FactsInfoUiModel? = null,
     val bloopersInfo: BloopersInfoUiModel? = null,
+    val linkedMediaItemsInfo: LinkedMediaItemsInfoUiModel? = null,
 )
