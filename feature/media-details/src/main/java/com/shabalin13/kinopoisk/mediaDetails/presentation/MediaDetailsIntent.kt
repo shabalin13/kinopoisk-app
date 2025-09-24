@@ -16,4 +16,6 @@ internal sealed interface MediaDetailsIntent {
     data class BlooperCardClicked(val blooperText: String) : MediaDetailsIntent
     data object ShowAllLinkedMediaItemsButtonClicked : MediaDetailsIntent
     data class LinkedMediaItemCardClicked(val mediaId: Int) : MediaDetailsIntent
+    data object ShowAllSimilarMediaItemsButtonClicked : MediaDetailsIntent
+    data class SimilarMediaItemCardClicked(val mediaId: Int) : MediaDetailsIntent
 }
