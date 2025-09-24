@@ -20,6 +20,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.co
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.facts.MediaDetailsFactsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header.MediaDetailsHeaderSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.linkedMediaItems.MediaDetailsLinkedMediaItemsSection
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.similarMediaItems.MediaDetailsSimilarMediaItemsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos.MediaDetailsVideosSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiModel
@@ -33,6 +34,7 @@ import com.shabalin13.kinopoisk.ui.theme.RatingColors
 import com.shabalin13.kinopoisk.ui.theme.Spacings
 
 @Composable
+@Suppress("LongMethod")
 internal fun MediaDetailsDataContent(
     state: MediaDetailsState.Data,
     handleIntent: (MediaDetailsIntent) -> Unit,
@@ -95,6 +97,14 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.linkedMediaItemsInfo?.let { linkedMediaItemsInfo ->
             MediaDetailsLinkedMediaItemsSection(
                 linkedMediaItemsInfo = linkedMediaItemsInfo,
+                handleIntent = handleIntent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        state.mediaDetails.similarMediaItemsInfo?.let { similarMediaItemsInfo ->
+            MediaDetailsSimilarMediaItemsSection(
+                similarMediaItemsInfo = similarMediaItemsInfo,
                 handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )

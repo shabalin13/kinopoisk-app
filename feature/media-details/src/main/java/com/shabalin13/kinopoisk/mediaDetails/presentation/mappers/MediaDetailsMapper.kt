@@ -6,6 +6,7 @@ import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActorProf
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsBlooper
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsFact
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsLinkedMediaItem
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsSimilarMediaItem
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.BloopersInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.FactsInfoUiModel
@@ -14,6 +15,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiM
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaItemInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.NoteInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.PersonInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.SimilarMediaItemsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
 import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import javax.inject.Inject
@@ -37,7 +39,8 @@ internal class MediaDetailsMapper @Inject constructor(
             contributorsInfo = contributorsMapper.mapToContributorsInfo(mediaDetails.contributors),
             factsInfo = mapFactsToFactsInfo(mediaDetails.facts),
             bloopersInfo = mapBloopersToBloopersInfo(mediaDetails.bloopers),
-            linkedMediaItemsInfo = mapLinkedMediaItemsToLinkedMediaItemsInfo(mediaDetails.linkedMediaItems)
+            linkedMediaItemsInfo = mapLinkedMediaItemsToLinkedMediaItemsInfo(mediaDetails.linkedMediaItems),
+            similarMediaItemsInfo = mapSimilarMediaItemsToSimilarMediaItemsInfo(mediaDetails.similarMediaItems)
         )
     }
 
@@ -104,6 +107,26 @@ internal class MediaDetailsMapper @Inject constructor(
                     )
                 },
             isMore = linkedMediaItems.size > LinkedMediaItemsInfoUiModel.MAX_VISIBLE
+        )
+    }
+
+    private fun mapSimilarMediaItemsToSimilarMediaItemsInfo(
+        similarMediaItems: List<MediaDetailsSimilarMediaItem>,
+    ): SimilarMediaItemsInfoUiModel? {
+        if (similarMediaItems.isEmpty()) return null
+
+        return SimilarMediaItemsInfoUiModel(
+            similarMediaItems = similarMediaItems.take(SimilarMediaItemsInfoUiModel.MAX_VISIBLE)
+                .map { similarMediaItem ->
+                    MediaItemInfoUiModel(
+                        id = similarMediaItem.id,
+                        name = similarMediaItem.name,
+                        posterPreviewUrl = similarMediaItem.posterPreviewUrl,
+                        year = similarMediaItem.year,
+                        rating = similarMediaItem.rating?.run(RatingUiModel::from)
+                    )
+                },
+            isMore = similarMediaItems.size > SimilarMediaItemsInfoUiModel.MAX_VISIBLE
         )
     }
 }
