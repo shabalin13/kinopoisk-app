@@ -70,4 +70,7 @@ dependencies {
 
     // Glide
     implementation(libs.glide.compose)
+
+    // Datetime
+    implementation(libs.kotlinx.datetime)
 }

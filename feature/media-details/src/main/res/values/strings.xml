@@ -22,4 +22,10 @@
     <string name="linked_media_items_section_header_title">Сиквелы и приквелы</string>
     <string name="similar_media_items_section_header_title">Похожие медиа</string>
     <string name="statistics_section_header_title">Статистика</string>
+    <string name="world_premiere_title">Премьера (в мире)</string>
+    <string name="russia_premiere_title">Премьера (в России)</string>
+    <string name="budget_title">Бюджет</string>
+    <string name="world_fee_title">Сборы (в мире)</string>
+    <string name="russia_fee_title">Сборы (в России)</string>
+    <string name="usa_fee_title">Сборы (в США)</string>
 </resources>
