@@ -1,21 +1,43 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActor
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsActorProfession
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsContributor
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsContributorProfession
 import com.shabalin13.kinopoisk.mediaDetails.R
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActorsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ContributorsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.PersonInfoUiModel
 import com.shabalin13.kinopoisk.ui.resources.ResourceProvider
 import javax.inject.Inject
 
-internal class MediaDetailsContributorsMapper @Inject constructor(
+internal class MediaDetailsPeopleMapper @Inject constructor(
     private val resourceProvider: ResourceProvider,
 ) {
-    fun mapToContributorsInfo(contributors: List<MediaDetailsContributor>): ContributorsInfoUiModel? {
+    fun mapActorsToActorsInfo(actors: List<MediaDetailsActor>): ActorsInfoUiModel? {
+        if (actors.isEmpty()) return null
+
+        val actorsFiltered = actors.filter { it.profession == MediaDetailsActorProfession.ACTOR }
+
+        return ActorsInfoUiModel(
+            actors = actorsFiltered.take(ActorsInfoUiModel.MAX_VISIBLE).map { actor ->
+                PersonInfoUiModel(
+                    id = actor.id,
+                    name = actor.name,
+                    photoUrl = actor.photoUrl,
+                    additionalInfo = actor.characterName
+                )
+            },
+            isMore = actorsFiltered.size > ActorsInfoUiModel.MAX_VISIBLE
+        )
+    }
+
+    fun mapContributorsToContributorsInfo(contributors: List<MediaDetailsContributor>): ContributorsInfoUiModel? {
         if (contributors.isEmpty()) return null
 
         return ContributorsInfoUiModel(
-            contributors = contributors.sortedBy { it.profession }.take(ContributorsInfoUiModel.MAX_VISIBLE)
+            contributors = contributors.sortedBy { it.profession }
+                .take(ContributorsInfoUiModel.MAX_VISIBLE)
                 .map { contributor ->
                     PersonInfoUiModel(
                         id = contributor.id,

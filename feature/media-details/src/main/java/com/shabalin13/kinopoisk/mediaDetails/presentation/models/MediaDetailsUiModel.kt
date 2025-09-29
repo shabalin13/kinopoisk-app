@@ -10,4 +10,5 @@ internal data class MediaDetailsUiModel(
     val bloopersInfo: BloopersInfoUiModel? = null,
     val linkedMediaItemsInfo: LinkedMediaItemsInfoUiModel? = null,
     val similarMediaItemsInfo: SimilarMediaItemsInfoUiModel? = null,
+    val statisticsInfos: List<StatisticsInfoUiModel>? = null,
 )
