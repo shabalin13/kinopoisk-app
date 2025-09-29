@@ -21,6 +21,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.fa
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header.MediaDetailsHeaderSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.linkedMediaItems.MediaDetailsLinkedMediaItemsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.similarMediaItems.MediaDetailsSimilarMediaItemsSection
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.statistics.MediaDetailsStatisticsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos.MediaDetailsVideosSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiModel
@@ -105,6 +106,14 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.similarMediaItemsInfo?.let { similarMediaItemsInfo ->
             MediaDetailsSimilarMediaItemsSection(
                 similarMediaItemsInfo = similarMediaItemsInfo,
+                handleIntent = handleIntent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        state.mediaDetails.statisticsInfos?.let { statisticsInfos ->
+            MediaDetailsStatisticsSection(
+                statisticsInfos = statisticsInfos,
                 handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )
