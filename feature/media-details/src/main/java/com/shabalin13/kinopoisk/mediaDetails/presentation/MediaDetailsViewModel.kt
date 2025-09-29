@@ -107,6 +107,10 @@ internal class MediaDetailsViewModel(
             is MediaDetailsIntent.SimilarMediaItemCardClicked -> {
                 Log.d("MediaDetailsIntent", "SimilarMediaItemCardClicked ${intent.mediaId}")
             }
+
+            MediaDetailsIntent.ShowAllStatisticsButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllStatisticsButtonClicked")
+            }
         }
     }
 

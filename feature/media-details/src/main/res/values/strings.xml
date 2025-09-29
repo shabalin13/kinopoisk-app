@@ -21,4 +21,5 @@
     <string name="bloopers_section_header_title">Забавные ляпы</string>
     <string name="linked_media_items_section_header_title">Сиквелы и приквелы</string>
     <string name="similar_media_items_section_header_title">Похожие медиа</string>
+    <string name="statistics_section_header_title">Статистика</string>
 </resources>
