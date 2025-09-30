@@ -28,4 +28,5 @@
     <string name="world_fee_title">Сборы (в мире)</string>
     <string name="russia_fee_title">Сборы (в России)</string>
     <string name="usa_fee_title">Сборы (в США)</string>
+    <string name="seasons_section_header_title">Сезоны и серии</string>
 </resources>

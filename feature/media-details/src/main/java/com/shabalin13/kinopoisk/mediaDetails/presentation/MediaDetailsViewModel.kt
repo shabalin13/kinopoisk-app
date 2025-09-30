@@ -111,6 +111,10 @@ internal class MediaDetailsViewModel(
             MediaDetailsIntent.ShowAllStatisticsButtonClicked -> {
                 Log.d("MediaDetailsIntent", "ShowAllStatisticsButtonClicked")
             }
+
+            MediaDetailsIntent.ShowAllSeasonsButtonClicked -> {
+                Log.d("MediaDetailsIntent", "ShowAllSeasonsButtonClicked")
+            }
         }
     }
 
