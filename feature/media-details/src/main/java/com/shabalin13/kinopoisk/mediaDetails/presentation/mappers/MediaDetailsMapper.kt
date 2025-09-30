@@ -7,6 +7,7 @@ import javax.inject.Inject
 
 internal class MediaDetailsMapper @Inject constructor(
     private val headerMapper: MediaDetailsHeaderMapper,
+    private val seasonsMapper: MediaDetailsSeasonsMapper,
     private val peopleMapper: MediaDetailsPeopleMapper,
     private val notesMapper: MediaDetailsNotesMapper,
     private val mediaItemsMapper: MediaDetailsMediaItemsMapper,
@@ -16,6 +17,7 @@ internal class MediaDetailsMapper @Inject constructor(
         return MediaDetailsUiModel(
             id = mediaDetails.id,
             headerInfo = headerMapper.mapToHeaderInfo(mediaDetails),
+            seasonsInfo = seasonsMapper.mapToSeasonsInfo(mediaDetails.seasonsInfo),
             videosInfo = mediaDetails.videos.map {
                 VideoInfoUiModel(
                     posterUrl = it.posterUrl,

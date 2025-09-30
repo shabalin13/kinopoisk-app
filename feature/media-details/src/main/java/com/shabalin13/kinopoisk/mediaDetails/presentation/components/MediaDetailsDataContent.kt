@@ -20,6 +20,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.co
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.facts.MediaDetailsFactsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header.MediaDetailsHeaderSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.linkedMediaItems.MediaDetailsLinkedMediaItemsSection
+import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.seasons.MediaDetailsSeasonsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.similarMediaItems.MediaDetailsSimilarMediaItemsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.statistics.MediaDetailsStatisticsSection
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.videos.MediaDetailsVideosSection
@@ -54,6 +55,14 @@ internal fun MediaDetailsDataContent(
                 .fillMaxWidth()
                 .padding(horizontal = Paddings.medium),
         )
+
+        state.mediaDetails.seasonsInfo?.let { seasonsInfo ->
+            MediaDetailsSeasonsSection(
+                seasonsInfo = seasonsInfo,
+                handleIntent = handleIntent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
 
         state.mediaDetails.videosInfo?.let { videosInfo ->
             MediaDetailsVideosSection(
