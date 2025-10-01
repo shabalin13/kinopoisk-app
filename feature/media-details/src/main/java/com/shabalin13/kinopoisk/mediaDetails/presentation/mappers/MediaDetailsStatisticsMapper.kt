@@ -50,7 +50,7 @@ internal class MediaDetailsStatisticsMapper @Inject constructor(
             budget?.let { budget ->
                 add(
                     StatisticsInfoUiModel(
-                        statistics = "${budget.currency}${NumberUtils.formatLongWithSpaces(budget.value)}",
+                        statistics = "${budget.currency} ${NumberUtils.formatLongWithSpaces(budget.value)}",
                         description = resourceProvider.getString(R.string.budget_title)
                     )
                 )
@@ -63,7 +63,7 @@ internal class MediaDetailsStatisticsMapper @Inject constructor(
             fees?.world?.let { fee ->
                 add(
                     StatisticsInfoUiModel(
-                        statistics = "${fee.currency}${NumberUtils.formatLongWithSpaces(fee.value)}",
+                        statistics = "${fee.currency} ${NumberUtils.formatLongWithSpaces(fee.value)}",
                         description = resourceProvider.getString(R.string.world_fee_title)
                     )
                 )
@@ -71,7 +71,7 @@ internal class MediaDetailsStatisticsMapper @Inject constructor(
             fees?.russia?.let { fee ->
                 add(
                     StatisticsInfoUiModel(
-                        statistics = "${fee.currency}${NumberUtils.formatLongWithSpaces(fee.value)}",
+                        statistics = "${fee.currency} ${NumberUtils.formatLongWithSpaces(fee.value)}",
                         description = resourceProvider.getString(R.string.russia_fee_title)
                     )
                 )
@@ -79,7 +79,7 @@ internal class MediaDetailsStatisticsMapper @Inject constructor(
             fees?.usa?.let { fee ->
                 add(
                     StatisticsInfoUiModel(
-                        statistics = "${fee.currency}${NumberUtils.formatLongWithSpaces(fee.value)}",
+                        statistics = "${fee.currency} ${NumberUtils.formatLongWithSpaces(fee.value)}",
                         description = resourceProvider.getString(R.string.usa_fee_title)
                     )
                 )
