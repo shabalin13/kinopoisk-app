@@ -44,7 +44,7 @@ internal fun MediaDetailsDataContent(
         modifier = modifier
             .verticalScroll(rememberScrollState())
             .padding(vertical = Paddings.medium),
-        verticalArrangement = Arrangement.spacedBy(Spacings.small)
+        verticalArrangement = Arrangement.spacedBy(Spacings.medium)
     ) {
         MediaDetailsHeaderSection(
             headerInfo = state.mediaDetails.headerInfo,
