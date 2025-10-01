@@ -12,6 +12,6 @@
     <item
         android:width="54dp"
         android:height="54dp"
-        android:drawable="@drawable/kinopoisk_icon"
+        android:drawable="@drawable/kinopoisk_square_icon"
         android:gravity="center" />
 </layer-list>
