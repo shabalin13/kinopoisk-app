@@ -6,4 +6,5 @@ internal data class HeaderInfoUiModel(
     val metaInfo: MetaInfoUiModel? = null,
     val actionButtonsInfo: ActionButtonsInfoUiModel = ActionButtonsInfoUiModel(),
     val descriptionInfo: DescriptionInfoUiModel? = null,
+    val ratingsInfo: RatingsInfoUiModel? = null,
 )

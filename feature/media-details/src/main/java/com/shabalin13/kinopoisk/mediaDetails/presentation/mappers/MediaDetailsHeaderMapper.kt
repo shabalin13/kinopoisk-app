@@ -1,11 +1,13 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 
 import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetails
+import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsRatings
 import com.shabalin13.kinopoisk.mediaDetails.R
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.ActionButtonsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MetaInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.RatingsInfoUiModel
 import com.shabalin13.kinopoisk.ui.formatters.DurationFormatter
 import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.resources.ResourceProvider
@@ -16,15 +18,16 @@ internal class MediaDetailsHeaderMapper @Inject constructor(
     private val durationFormatter: DurationFormatter,
 ) {
     fun mapToHeaderInfo(mediaDetails: MediaDetails): HeaderInfoUiModel {
-        val metaInfo = mapToMetaInfo(mediaDetails)
-        val descriptionInfo = mapToDescriptionInfo(mediaDetails.description, mediaDetails.ageRating)
-
         return HeaderInfoUiModel(
             name = mediaDetails.name,
             posterUrl = mediaDetails.posterUrl,
-            metaInfo = metaInfo,
+            metaInfo = mapToMetaInfo(mediaDetails),
             actionButtonsInfo = ActionButtonsInfoUiModel(),
-            descriptionInfo = descriptionInfo
+            descriptionInfo = mapToDescriptionInfo(
+                mediaDetails.description,
+                mediaDetails.ageRating
+            ),
+            ratingsInfo = mapToRatingsInfo(mediaDetails.ratings)
         )
     }
 
@@ -88,6 +91,16 @@ internal class MediaDetailsHeaderMapper @Inject constructor(
         return DescriptionInfoUiModel(
             description = description,
             ageRating = ageRating?.let { "$it+" }
+        )
+    }
+
+    private fun mapToRatingsInfo(ratings: MediaDetailsRatings?): RatingsInfoUiModel? {
+        val kpRating = ratings?.kp?.value?.run(RatingUiModel::from)
+        val imdbRating = ratings?.imdb?.value?.run(RatingUiModel::from)
+        if (kpRating == null && imdbRating == null) return null
+        return RatingsInfoUiModel(
+            kpRating = kpRating,
+            imdbRating = imdbRating
         )
     }
 }

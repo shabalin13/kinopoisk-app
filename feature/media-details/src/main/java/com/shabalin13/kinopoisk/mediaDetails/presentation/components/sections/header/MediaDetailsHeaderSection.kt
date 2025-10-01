@@ -1,8 +1,8 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.header
 
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,6 +27,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsIntent
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MetaInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.models.RatingsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.theme.MediaDetailsDimens
 import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
@@ -44,7 +45,7 @@ internal fun MediaDetailsHeaderSection(
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(Spacings.medium)
+//        verticalArrangement = Arrangement.spacedBy(Spacings.medium)
     ) {
         GlideImage(
             model = headerInfo.posterUrl,
@@ -58,6 +59,8 @@ internal fun MediaDetailsHeaderSection(
                 .width(MediaDetailsDimens.Poster.width)
         )
 
+        Spacer(Modifier.height(Spacings.medium))
+
         Text(
             text = headerInfo.name,
             maxLines = 2,
@@ -66,15 +69,21 @@ internal fun MediaDetailsHeaderSection(
             style = MaterialTheme.typography.headlineLarge,
         )
 
+        Spacer(Modifier.height(Spacings.medium))
+
         headerInfo.metaInfo?.let { metaInfo ->
             HeaderMetaInfo(metaInfo)
         }
+
+        Spacer(Modifier.height(Spacings.medium))
 
         HeaderActionButtons(
             headerInfo.actionButtonsInfo,
             handleIntent = handleIntent,
             modifier = Modifier.fillMaxWidth()
         )
+
+        Spacer(Modifier.height(Spacings.medium))
 
         headerInfo.descriptionInfo?.let { descriptionInfo ->
             HeaderDescription(
@@ -83,9 +92,19 @@ internal fun MediaDetailsHeaderSection(
                 modifier = Modifier.fillMaxWidth()
             )
         }
+
+        Spacer(Modifier.height(Spacings.extraSmall))
+
+        headerInfo.ratingsInfo?.let { ratingsInfo ->
+            HeaderRatings(
+                ratingsInfo = ratingsInfo,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
+@Suppress("MagicNumber")
 @Preview
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
@@ -108,6 +127,10 @@ internal fun MediaDetailsHeaderSectionPreview() {
                             "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
                             "день рождения Гарри все меняется...",
                         ageRating = "12+"
+                    ),
+                    ratingsInfo = RatingsInfoUiModel(
+                        kpRating = RatingUiModel.from(8.7),
+                        imdbRating = RatingUiModel.from(6.5)
                     )
                 ),
                 handleIntent = { intent ->
