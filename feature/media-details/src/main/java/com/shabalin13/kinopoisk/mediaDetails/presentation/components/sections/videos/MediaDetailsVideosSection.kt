@@ -35,7 +35,6 @@ internal fun MediaDetailsVideosSection(
     ) {
         MediaDetailsSectionHeader(
             title = stringResource(R.string.videos_section_header_title),
-            onButtonClick = { handleIntent(MediaDetailsIntent.ShowAllVideosButtonClicked) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(MediaDetailsDimens.SectionHeader.height)

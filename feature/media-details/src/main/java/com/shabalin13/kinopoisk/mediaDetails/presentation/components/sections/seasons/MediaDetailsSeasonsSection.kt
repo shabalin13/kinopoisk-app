@@ -15,7 +15,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.R
-import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsIntent
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.helpers.MediaDetailsSectionHeader
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.SeasonsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.theme.MediaDetailsDimens
@@ -25,7 +24,6 @@ import com.shabalin13.kinopoisk.ui.theme.Paddings
 @Composable
 internal fun MediaDetailsSeasonsSection(
     seasonsInfo: SeasonsInfoUiModel,
-    handleIntent: (MediaDetailsIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -33,7 +31,6 @@ internal fun MediaDetailsSeasonsSection(
     ) {
         MediaDetailsSectionHeader(
             title = stringResource(R.string.seasons_section_header_title),
-            onButtonClick = { handleIntent(MediaDetailsIntent.ShowAllSeasonsButtonClicked) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(MediaDetailsDimens.SectionHeader.height)
@@ -60,7 +57,6 @@ internal fun MediaDetailsSeasonsSectionPreview() {
         Surface {
             MediaDetailsSeasonsSection(
                 seasonsInfo = "11 сезонов, 177 серий",
-                handleIntent = { },
                 modifier = Modifier.fillMaxWidth()
             )
         }

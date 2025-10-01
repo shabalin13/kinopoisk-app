@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.R
-import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsIntent
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.sections.helpers.MediaDetailsSectionHeader
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.StatisticsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.theme.MediaDetailsDimens
@@ -26,7 +25,6 @@ import com.shabalin13.kinopoisk.ui.theme.Spacings
 @Composable
 internal fun MediaDetailsStatisticsSection(
     statisticsInfos: List<StatisticsInfoUiModel>,
-    handleIntent: (MediaDetailsIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -34,7 +32,6 @@ internal fun MediaDetailsStatisticsSection(
     ) {
         MediaDetailsSectionHeader(
             title = stringResource(R.string.statistics_section_header_title),
-            onButtonClick = { handleIntent(MediaDetailsIntent.ShowAllStatisticsButtonClicked) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(MediaDetailsDimens.SectionHeader.height)
@@ -73,7 +70,6 @@ internal fun MediaDetailsStatisticsSectionPreview() {
                         description = "Сборы (Россия)"
                     )
                 ),
-                handleIntent = { },
                 modifier = Modifier.fillMaxWidth()
             )
         }

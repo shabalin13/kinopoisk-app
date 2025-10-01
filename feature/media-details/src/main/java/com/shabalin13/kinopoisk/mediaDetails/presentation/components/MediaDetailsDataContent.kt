@@ -57,7 +57,6 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.seasonsInfo?.let { seasonsInfo ->
             MediaDetailsSeasonsSection(
                 seasonsInfo = seasonsInfo,
-                handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -121,7 +120,6 @@ internal fun MediaDetailsDataContent(
         state.mediaDetails.statisticsInfos?.let { statisticsInfos ->
             MediaDetailsStatisticsSection(
                 statisticsInfos = statisticsInfos,
-                handleIntent = handleIntent,
                 modifier = Modifier.fillMaxWidth()
             )
         }

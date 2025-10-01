@@ -56,10 +56,6 @@ internal class MediaDetailsViewModel(
                 Log.d("MediaDetailsIntent", "ShowFullDescriptionButtonClicked")
             }
 
-            MediaDetailsIntent.ShowAllVideosButtonClicked -> {
-                Log.d("MediaDetailsIntent", "ShowAllVideosButtonClicked")
-            }
-
             is MediaDetailsIntent.VideoCardClicked -> {
                 Log.d("MediaDetailsIntent", "VideoCardClicked ${intent.videoUrl}")
             }
@@ -106,14 +102,6 @@ internal class MediaDetailsViewModel(
 
             is MediaDetailsIntent.SimilarMediaItemCardClicked -> {
                 Log.d("MediaDetailsIntent", "SimilarMediaItemCardClicked ${intent.mediaId}")
-            }
-
-            MediaDetailsIntent.ShowAllStatisticsButtonClicked -> {
-                Log.d("MediaDetailsIntent", "ShowAllStatisticsButtonClicked")
-            }
-
-            MediaDetailsIntent.ShowAllSeasonsButtonClicked -> {
-                Log.d("MediaDetailsIntent", "ShowAllSeasonsButtonClicked")
             }
         }
     }

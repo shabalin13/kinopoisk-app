@@ -5,7 +5,6 @@ internal sealed interface MediaDetailsIntent {
     data object ToggleWatchlistButtonClicked : MediaDetailsIntent
     data object ShareButtonClicked : MediaDetailsIntent
     data object ShowFullDescriptionButtonClicked : MediaDetailsIntent
-    data object ShowAllVideosButtonClicked : MediaDetailsIntent
     data class VideoCardClicked(val videoUrl: String) : MediaDetailsIntent
     data object ShowAllActorsButtonClicked : MediaDetailsIntent
     data class PersonCardClicked(val personId: Int) : MediaDetailsIntent
@@ -18,6 +17,4 @@ internal sealed interface MediaDetailsIntent {
     data class LinkedMediaItemCardClicked(val mediaId: Int) : MediaDetailsIntent
     data object ShowAllSimilarMediaItemsButtonClicked : MediaDetailsIntent
     data class SimilarMediaItemCardClicked(val mediaId: Int) : MediaDetailsIntent
-    data object ShowAllStatisticsButtonClicked : MediaDetailsIntent
-    data object ShowAllSeasonsButtonClicked : MediaDetailsIntent
 }

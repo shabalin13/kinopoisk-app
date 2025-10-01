@@ -27,17 +27,21 @@ import com.shabalin13.kinopoisk.ui.theme.Spacings
 @Composable
 internal fun MediaDetailsSectionHeader(
     title: String,
-    onButtonClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onButtonClick: (() -> Unit)? = null,
 ) {
     Row(
-        modifier = Modifier
-            .clickable(
-                interactionSource = null,
-                indication = ripple(),
-                onClick = onButtonClick
-            )
-            .then(modifier),
+        modifier = if (onButtonClick != null) {
+            Modifier
+                .clickable(
+                    interactionSource = null,
+                    indication = ripple(),
+                    onClick = onButtonClick
+                )
+                .then(modifier)
+        } else {
+            modifier
+        },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Spacings.medium)
     ) {
@@ -50,13 +54,15 @@ internal fun MediaDetailsSectionHeader(
             modifier = Modifier.weight(1f)
         )
 
-        Text(
-            text = stringResource(R.string.section_header_button_title),
-            textAlign = TextAlign.End,
-            maxLines = 1,
-            style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.primary,
-        )
+        if (onButtonClick != null) {
+            Text(
+                text = stringResource(R.string.section_header_button_title),
+                textAlign = TextAlign.End,
+                maxLines = 1,
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
     }
 }
 
@@ -87,6 +93,23 @@ internal fun MediaDetailsSectionHeaderPreview2() {
             MediaDetailsSectionHeader(
                 title = "Очень длинное название для конкретной секции",
                 onButtonClick = { println("Button clicked") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(MediaDetailsDimens.SectionHeader.height)
+                    .padding(horizontal = Paddings.medium)
+            )
+        }
+    }
+}
+
+@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+internal fun MediaDetailsSectionHeaderPreview3() {
+    KinopoiskTheme {
+        Surface {
+            MediaDetailsSectionHeader(
+                title = "Трейлеры и Тизеры",
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(MediaDetailsDimens.SectionHeader.height)
