@@ -68,8 +68,8 @@ internal fun MediaDetailsVideoCard(
                         onClick = { onCardClick(videoInfo.videoUrl) }
                     ),
                 contentScale = ContentScale.Crop,
-                loading = placeholder(R.drawable.video_poster_placeholder),
-                failure = placeholder(R.drawable.video_poster_placeholder),
+                loading = placeholder(R.drawable.media_details_video_poster_placeholder),
+                failure = placeholder(R.drawable.media_details_video_poster_placeholder),
                 transition = CrossFade
             )
 

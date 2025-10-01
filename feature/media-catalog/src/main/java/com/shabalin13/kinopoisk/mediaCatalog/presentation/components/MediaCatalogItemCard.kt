@@ -52,8 +52,8 @@ internal fun MediaCatalogItemCard(
             model = mediaCatalogItem.posterPreviewUrl,
             contentDescription = stringResource(R.string.poster_content_description),
             contentScale = ContentScale.Crop,
-            loading = placeholder(R.drawable.poster_placeholder),
-            failure = placeholder(R.drawable.poster_placeholder),
+            loading = placeholder(R.drawable.media_catalog_poster_placeholder),
+            failure = placeholder(R.drawable.media_catalog_poster_placeholder),
             transition = CrossFade,
             modifier = Modifier
                 .height(MediaCatalogDimens.Poster.height)

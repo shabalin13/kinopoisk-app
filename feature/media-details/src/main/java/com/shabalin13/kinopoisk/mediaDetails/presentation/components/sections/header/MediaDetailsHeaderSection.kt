@@ -50,8 +50,8 @@ internal fun MediaDetailsHeaderSection(
             model = headerInfo.posterUrl,
             contentDescription = stringResource(R.string.poster_content_description),
             contentScale = ContentScale.Crop,
-            loading = placeholder(R.drawable.poster_placeholder),
-            failure = placeholder(R.drawable.poster_placeholder),
+            loading = placeholder(R.drawable.media_details_poster_placeholder),
+            failure = placeholder(R.drawable.media_details_poster_placeholder),
             transition = CrossFade,
             modifier = Modifier
                 .height(MediaDetailsDimens.Poster.height)

@@ -52,8 +52,8 @@ internal fun MediaDetailsPersonCard(
             model = personInfo.photoUrl,
             contentDescription = personInfo.name,
             contentScale = ContentScale.Crop,
-            loading = placeholder(R.drawable.person_photo_placeholder),
-            failure = placeholder(R.drawable.person_photo_placeholder),
+            loading = placeholder(R.drawable.media_details_person_photo_placeholder),
+            failure = placeholder(R.drawable.media_details_person_photo_placeholder),
             transition = CrossFade,
             modifier = Modifier
                 .width(MediaDetailsDimens.PersonCard.PersonPhoto.width)

@@ -2,16 +2,16 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#F5F5F5" />
+            <solid android:color="#474747" />
             <size
-                android:width="70dp"
-                android:height="105dp" />
+                android:width="140dp"
+                android:height="210dp" />
         </shape>
     </item>
 
     <item
-        android:width="18dp"
-        android:height="18dp"
-        android:drawable="@drawable/kinopoisk_black_icon"
+        android:width="36dp"
+        android:height="36dp"
+        android:drawable="@drawable/kinopoisk_square_icon"
         android:gravity="center" />
 </layer-list>
