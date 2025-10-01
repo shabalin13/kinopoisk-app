@@ -32,8 +32,6 @@ internal class MediaDetailsHeaderMapper @Inject constructor(
     }
 
     private fun mapToMetaInfo(mediaDetails: MediaDetails): MetaInfoUiModel? {
-        val rating = mediaDetails.ratings?.kp?.value?.run(RatingUiModel::from)
-
         val summary1 = buildList {
             if (mediaDetails.isSeries) {
                 mediaDetails.releaseYears?.let { releaseYears ->
@@ -76,7 +74,6 @@ internal class MediaDetailsHeaderMapper @Inject constructor(
 
         if (mediaDetails.alternativeName == null && summary == null) return null
         return MetaInfoUiModel(
-            rating = rating,
             alternativeName = mediaDetails.alternativeName,
             summary = summary
         )

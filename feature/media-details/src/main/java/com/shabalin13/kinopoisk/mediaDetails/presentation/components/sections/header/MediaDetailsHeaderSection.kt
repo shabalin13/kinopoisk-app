@@ -32,7 +32,6 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.theme.MediaDetailsDime
 import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
-import com.shabalin13.kinopoisk.ui.theme.RatingColors
 import com.shabalin13.kinopoisk.ui.theme.Spacings
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -116,7 +115,6 @@ internal fun MediaDetailsHeaderSectionPreview() {
                     name = "Гарри Поттер и философский камень",
                     posterUrl = null,
                     metaInfo = MetaInfoUiModel(
-                        rating = RatingUiModel("8.3", RatingColors.high),
                         alternativeName = "Harry Potter and the Sorcerer's Stone",
                         summary = "2001, фэнтэзи, приключения, детектив, триллер, боевик, ужасы" +
                             "\nВеликобритания, США, Россия, Уругвай, Китая, Австралия, 2 ч 32 мин, 12+",

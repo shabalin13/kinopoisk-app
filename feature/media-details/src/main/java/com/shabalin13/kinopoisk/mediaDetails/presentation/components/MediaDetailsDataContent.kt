@@ -29,10 +29,8 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiMod
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MetaInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
-import com.shabalin13.kinopoisk.ui.models.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
-import com.shabalin13.kinopoisk.ui.theme.RatingColors
 import com.shabalin13.kinopoisk.ui.theme.Spacings
 
 @Composable
@@ -145,7 +143,6 @@ internal fun MediaDetailsDataContentPreview() {
                             name = "Гарри Поттер и философский камень",
                             posterUrl = null,
                             metaInfo = MetaInfoUiModel(
-                                rating = RatingUiModel("8.3", RatingColors.high),
                                 alternativeName = "Harry Potter and the Sorcerer's Stone",
                                 summary = "2001, фэнтэзи, приключения\nВеликобритания, 2 ч 32 мин, 12+",
                             ),
