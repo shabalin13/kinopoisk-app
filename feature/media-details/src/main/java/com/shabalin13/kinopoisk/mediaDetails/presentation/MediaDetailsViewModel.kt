@@ -63,6 +63,9 @@ internal class MediaDetailsViewModel(
 
             is MediaDetailsIntent.VideoCardClicked -> {
                 Log.d("MediaDetailsIntent", "VideoCardClicked ${intent.videoUrl}")
+                viewModelScope.launch {
+                    _effect.send(MediaDetailsEffect.OpenVideoUrl(intent.videoUrl))
+                }
             }
 
             MediaDetailsIntent.ShowAllActorsButtonClicked -> {

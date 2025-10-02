@@ -3,6 +3,7 @@ package com.shabalin13.kinopoisk.mediaDetails.navigation
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -45,6 +46,7 @@ internal fun NavGraphBuilder.mediaDetailsNavGraph(
             )
             val state by viewModel.state.collectAsStateWithLifecycle()
 
+            val uriHandler = LocalUriHandler.current
             LaunchedEffect(viewModel.effect) {
                 viewModel.effect.collect { effect ->
                     when (effect) {
@@ -57,6 +59,8 @@ internal fun NavGraphBuilder.mediaDetailsNavGraph(
                         is MediaDetailsEffect.NavigateToMediaDetails -> onNavigateToMediaDetails(
                             effect.mediaId
                         )
+
+                        is MediaDetailsEffect.OpenVideoUrl -> uriHandler.openUri(effect.videoUrl)
                     }
                 }
             }
