@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="poster_content_description">Постер для медиа-контента</string>
+    <string name="rate_button_title">Оценить</string>
+    <string name="toggle_watchlist_button_title">Буду смотреть</string>
+    <string name="share_button_title">Поделиться</string>
+    <string name="from_year">с %1$d</string>
+    <string name="show_full_description_button_title">Показать полное описание</string>
+    <string name="videos_section_header_title">Трейлеры и Тизеры</string>
+    <string name="section_header_button_title">Все</string>
+    <string name="actors_section_header_title">Актеры</string>
+    <string name="contributors_section_header_title">Съемочная группа</string>
+    <string name="director_profession_title">Режиссер</string>
+    <string name="producer_profession_title">Продюсер</string>
+    <string name="writer_profession_title">Сценарист</string>
+    <string name="operator_profession_title">Оператор</string>
+    <string name="composer_profession_title">Композитор</string>
+    <string name="designer_profession_title">Художник</string>
+    <string name="editor_profession_title">Монтажер</string>
+    <string name="facts_section_header_title">Интересные факты</string>
+    <string name="bloopers_section_header_title">Забавные ляпы</string>
+    <string name="linked_media_items_section_header_title">Сиквелы и приквелы</string>
+    <string name="similar_media_items_section_header_title">Похожие медиа</string>
+    <string name="statistics_section_header_title">Статистика</string>
+    <string name="world_premiere_title">Премьера (в мире)</string>
+    <string name="russia_premiere_title">Премьера (в России)</string>
+    <string name="budget_title">Бюджет</string>
+    <string name="world_fee_title">Сборы (в мире)</string>
+    <string name="russia_fee_title">Сборы (в России)</string>
+    <string name="usa_fee_title">Сборы (в США)</string>
+    <string name="seasons_section_header_title">Сезоны и серии</string>
+    <string name="media_details_top_bar_title">"Детальная информация"</string>
+</resources>

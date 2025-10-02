@@ -85,6 +85,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":feature:media-catalog"))
+    implementation(project(":feature:media-details"))
     implementation(project(":core:ui"))
 
     // Dagger
