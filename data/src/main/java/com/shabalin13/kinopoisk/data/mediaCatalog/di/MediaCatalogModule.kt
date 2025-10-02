@@ -1,6 +1,6 @@
 package com.shabalin13.kinopoisk.data.mediaCatalog.di
 
-import com.shabalin13.kinopoisk.data.mediaCatalog.mapper.MediaCatalogMapper
+import com.shabalin13.kinopoisk.data.mediaCatalog.mappers.MediaCatalogMapper
 import com.shabalin13.kinopoisk.data.mediaCatalog.remote.dataSources.MediaCatalogRemoteDataSource
 import com.shabalin13.kinopoisk.data.mediaCatalog.remote.dataSources.MediaCatalogRemoteDataSourceImpl
 import com.shabalin13.kinopoisk.data.mediaCatalog.repositories.MediaCatalogRepositoryImpl

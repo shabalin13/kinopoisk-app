@@ -2,7 +2,7 @@ package com.shabalin13.kinopoisk.data.mediaCatalog.remote.dataSources
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.shabalin13.kinopoisk.data.mediaCatalog.mapper.MediaCatalogMapper
+import com.shabalin13.kinopoisk.data.mediaCatalog.mappers.MediaCatalogMapper
 import com.shabalin13.kinopoisk.domain.mediaCatalog.models.MediaCatalogItem
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory

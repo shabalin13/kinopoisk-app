@@ -1,6 +1,8 @@
 package com.shabalin13.kinopoisk.di
 
+import android.content.Context
 import com.shabalin13.kinopoisk.data.di.DataComponent
+import dagger.BindsInstance
 import dagger.Component
 
 @Component(
@@ -13,6 +15,7 @@ internal interface AppComponent : FeatureDependencies {
     interface Factory {
         fun create(
             dataComponent: DataComponent,
+            @BindsInstance context: Context,
         ): AppComponent
     }
 }

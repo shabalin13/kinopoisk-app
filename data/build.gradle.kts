@@ -88,4 +88,7 @@ dependencies {
 
     // Paging
     implementation(libs.paging.runtime)
+
+    // Datetime
+    implementation(libs.kotlinx.datetime)
 }
