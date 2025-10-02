@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaDetails.navigation
 
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -12,6 +13,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsComponentViewModel
 import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsDependencies
+import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsEffect
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsScreen
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsViewModel
 
@@ -41,6 +43,18 @@ internal fun NavGraphBuilder.mediaDetailsNavGraph(
                     .create(mediaId)
             )
             val state by viewModel.state.collectAsStateWithLifecycle()
+
+            LaunchedEffect(viewModel.effect) {
+                viewModel.effect.collect { effect ->
+                    when (effect) {
+                        MediaDetailsEffect.NavigateBack -> {
+                            if (navController.previousBackStackEntry != null) {
+                                navController.navigateUp()
+                            }
+                        }
+                    }
+                }
+            }
 
             MediaDetailsScreen(
                 state = state,

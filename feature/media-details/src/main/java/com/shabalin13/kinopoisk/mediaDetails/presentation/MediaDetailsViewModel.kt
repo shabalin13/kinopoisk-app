@@ -10,8 +10,10 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,6 +26,9 @@ internal class MediaDetailsViewModel(
 
     private val _state = MutableStateFlow<MediaDetailsState>(MediaDetailsState.Loading)
     val state = _state.asStateFlow()
+
+    private val _effect = Channel<MediaDetailsEffect>(Channel.BUFFERED)
+    val effect = _effect.receiveAsFlow()
 
     init {
         viewModelScope.launch {
@@ -103,6 +108,11 @@ internal class MediaDetailsViewModel(
             is MediaDetailsIntent.SimilarMediaItemCardClicked -> {
                 Log.d("MediaDetailsIntent", "SimilarMediaItemCardClicked ${intent.mediaId}")
             }
+
+            MediaDetailsIntent.BackButtonClicked ->
+                viewModelScope.launch {
+                    _effect.send(MediaDetailsEffect.NavigateBack)
+                }
         }
     }
 

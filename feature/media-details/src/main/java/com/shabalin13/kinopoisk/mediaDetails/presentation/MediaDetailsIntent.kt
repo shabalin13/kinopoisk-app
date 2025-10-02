@@ -17,4 +17,5 @@ internal sealed interface MediaDetailsIntent {
     data class LinkedMediaItemCardClicked(val mediaId: Int) : MediaDetailsIntent
     data object ShowAllSimilarMediaItemsButtonClicked : MediaDetailsIntent
     data class SimilarMediaItemCardClicked(val mediaId: Int) : MediaDetailsIntent
+    data object BackButtonClicked : MediaDetailsIntent
 }

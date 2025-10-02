@@ -5,10 +5,20 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.MediaDetailsDataContent
 import com.shabalin13.kinopoisk.mediaDetails.presentation.components.MediaDetailsErrorContent
@@ -19,13 +29,39 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiM
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MetaInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
+import com.shabalin13.kinopoisk.mediaDetails.R as mediaDetailsR
+import com.shabalin13.kinopoisk.ui.R as uiR
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MediaDetailsScreen(
     state: MediaDetailsState,
     handleIntent: (MediaDetailsIntent) -> Unit,
 ) {
-    Scaffold { innerPadding ->
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(mediaDetailsR.string.media_details_top_bar_title),
+                        style = MaterialTheme.typography.headlineMedium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                },
+                navigationIcon = {
+                    IconButton(
+                        onClick = { handleIntent(MediaDetailsIntent.BackButtonClicked) }
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(uiR.string.back_button_content_description)
+                        )
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
