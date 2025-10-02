@@ -20,6 +20,7 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsViewModel
 internal fun NavGraphBuilder.mediaDetailsNavGraph(
     navController: NavController,
     dependencies: MediaDetailsDependencies,
+    onNavigateToMediaDetails: (mediaId: Int) -> Unit,
 ) {
     navigation(
         startDestination = MediaDetailsRoute.MediaDetailsMain.route,
@@ -52,6 +53,10 @@ internal fun NavGraphBuilder.mediaDetailsNavGraph(
                                 navController.navigateUp()
                             }
                         }
+
+                        is MediaDetailsEffect.NavigateToMediaDetails -> onNavigateToMediaDetails(
+                            effect.mediaId
+                        )
                     }
                 }
             }

@@ -30,7 +30,10 @@ fun AppNavGraph(
 
         MediaDetailsEntry.getNavGraph(
             navController = navController,
-            dependencies = featureDependencies
+            dependencies = featureDependencies,
+            onNavigateToMediaDetails = { mediaId ->
+                navController.navigate(MediaDetailsEntry.getRoute(mediaId))
+            }
         ).invoke(this)
     }
 }

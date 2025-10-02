@@ -99,6 +99,9 @@ internal class MediaDetailsViewModel(
 
             is MediaDetailsIntent.LinkedMediaItemCardClicked -> {
                 Log.d("MediaDetailsIntent", "LinkedMediaItemCardClicked ${intent.mediaId}")
+                viewModelScope.launch {
+                    _effect.send(MediaDetailsEffect.NavigateToMediaDetails(intent.mediaId))
+                }
             }
 
             MediaDetailsIntent.ShowAllSimilarMediaItemsButtonClicked -> {
@@ -107,6 +110,9 @@ internal class MediaDetailsViewModel(
 
             is MediaDetailsIntent.SimilarMediaItemCardClicked -> {
                 Log.d("MediaDetailsIntent", "SimilarMediaItemCardClicked ${intent.mediaId}")
+                viewModelScope.launch {
+                    _effect.send(MediaDetailsEffect.NavigateToMediaDetails(intent.mediaId))
+                }
             }
 
             MediaDetailsIntent.BackButtonClicked ->

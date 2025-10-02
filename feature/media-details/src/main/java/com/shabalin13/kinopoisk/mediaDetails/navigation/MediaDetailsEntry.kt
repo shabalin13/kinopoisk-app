@@ -8,9 +8,10 @@ object MediaDetailsEntry {
     fun getNavGraph(
         navController: NavController,
         dependencies: MediaDetailsDependencies,
+        onNavigateToMediaDetails: (mediaId: Int) -> Unit,
     ): NavGraphBuilder.() -> Unit {
         return {
-            mediaDetailsNavGraph(navController, dependencies)
+            mediaDetailsNavGraph(navController, dependencies, onNavigateToMediaDetails)
         }
     }
 
