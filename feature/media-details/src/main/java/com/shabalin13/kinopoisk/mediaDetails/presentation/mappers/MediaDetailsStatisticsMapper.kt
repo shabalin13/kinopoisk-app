@@ -1,10 +1,11 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetails
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsBudget
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsFees
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsPremieres
+import com.shabalin13.kinopoisk.domain.model.MediaItem
+import com.shabalin13.kinopoisk.domain.model.MediaItemBudget
+import com.shabalin13.kinopoisk.domain.model.MediaItemFees
+import com.shabalin13.kinopoisk.domain.model.MediaItemPremieres
 import com.shabalin13.kinopoisk.mediaDetails.R
+import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsScope
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.StatisticsInfoUiModel
 import com.shabalin13.kinopoisk.ui.resources.ResourceProvider
 import com.shabalin13.kinopoisk.ui.utils.NumberUtils
@@ -12,18 +13,19 @@ import kotlinx.datetime.toJavaLocalDate
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
+@MediaDetailsScope
 internal class MediaDetailsStatisticsMapper @Inject constructor(
     private val resourceProvider: ResourceProvider,
 ) {
-    fun mapToStatisticsInfos(mediaDetails: MediaDetails): List<StatisticsInfoUiModel>? {
+    fun mapToStatisticsInfos(mediaItem: MediaItem): List<StatisticsInfoUiModel>? {
         return (
-            mapPremieresToStatisticsInfos(mediaDetails.premieres) +
-                mapBudgetToStatisticsInfo(mediaDetails.budget) +
-                mapFeesToStatisticsInfos(mediaDetails.fees)
+            mapPremieresToStatisticsInfos(mediaItem.premieres) +
+                mapBudgetToStatisticsInfo(mediaItem.budget) +
+                mapFeesToStatisticsInfos(mediaItem.fees)
             ).takeIf { it.isNotEmpty() }
     }
 
-    private fun mapPremieresToStatisticsInfos(premieres: MediaDetailsPremieres?): List<StatisticsInfoUiModel> {
+    private fun mapPremieresToStatisticsInfos(premieres: MediaItemPremieres?): List<StatisticsInfoUiModel> {
         return buildList {
             val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
             premieres?.world?.let { premiere ->
@@ -45,7 +47,7 @@ internal class MediaDetailsStatisticsMapper @Inject constructor(
         }
     }
 
-    private fun mapBudgetToStatisticsInfo(budget: MediaDetailsBudget?): List<StatisticsInfoUiModel> {
+    private fun mapBudgetToStatisticsInfo(budget: MediaItemBudget?): List<StatisticsInfoUiModel> {
         return buildList {
             budget?.let { budget ->
                 add(
@@ -58,7 +60,7 @@ internal class MediaDetailsStatisticsMapper @Inject constructor(
         }
     }
 
-    private fun mapFeesToStatisticsInfos(fees: MediaDetailsFees?): List<StatisticsInfoUiModel> {
+    private fun mapFeesToStatisticsInfos(fees: MediaItemFees?): List<StatisticsInfoUiModel> {
         return buildList {
             fees?.world?.let { fee ->
                 add(

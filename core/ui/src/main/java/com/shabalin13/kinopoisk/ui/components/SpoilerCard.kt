@@ -34,7 +34,7 @@ fun SpoilerCard(
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.visibility_off_icon),
+            imageVector = ImageVector.vectorResource(R.drawable.core_visibility_off_icon),
             contentDescription = stringResource(R.string.spoiler_card_title),
             modifier = Modifier.size(28.dp),
         )

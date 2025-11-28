@@ -1,14 +1,16 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsBlooper
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetailsFact
+import com.shabalin13.kinopoisk.domain.model.MediaItemBlooper
+import com.shabalin13.kinopoisk.domain.model.MediaItemFact
+import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsScope
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.BloopersInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.FactsInfoUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.NoteInfoUiModel
 import javax.inject.Inject
 
+@MediaDetailsScope
 internal class MediaDetailsNotesMapper @Inject constructor() {
-    fun mapFactsToFactsInfo(facts: List<MediaDetailsFact>): FactsInfoUiModel? {
+    fun mapFactsToFactsInfo(facts: List<MediaItemFact>): FactsInfoUiModel? {
         if (facts.isEmpty()) return null
 
         return FactsInfoUiModel(
@@ -22,7 +24,7 @@ internal class MediaDetailsNotesMapper @Inject constructor() {
         )
     }
 
-    fun mapBloopersToBloopersInfo(bloopers: List<MediaDetailsBlooper>): BloopersInfoUiModel? {
+    fun mapBloopersToBloopersInfo(bloopers: List<MediaItemBlooper>): BloopersInfoUiModel? {
         if (bloopers.isEmpty()) return null
 
         return BloopersInfoUiModel(

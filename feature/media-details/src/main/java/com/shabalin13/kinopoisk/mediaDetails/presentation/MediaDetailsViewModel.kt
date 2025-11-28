@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.shabalin13.kinopoisk.domain.mediaDetails.usecases.GetMediaDetailsUseCase
+import com.shabalin13.kinopoisk.domain.usecase.GetMediaItemUseCase
 import com.shabalin13.kinopoisk.mediaDetails.presentation.mappers.MediaDetailsMapper
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 
 internal class MediaDetailsViewModel(
     private val mediaId: Int,
-    private val getMediaDetailsUseCase: GetMediaDetailsUseCase,
+    private val getMediaItemUseCase: GetMediaItemUseCase,
     private val mapper: MediaDetailsMapper,
 ) : ViewModel() {
 
@@ -33,7 +33,7 @@ internal class MediaDetailsViewModel(
     init {
         viewModelScope.launch {
             _state.value = MediaDetailsState.Loading
-            val result = getMediaDetailsUseCase(mediaId)
+            val result = getMediaItemUseCase(mediaId)
             _state.value = result.fold(
                 onSuccess = {
                     withContext(Dispatchers.Default) {
@@ -165,14 +165,14 @@ internal class MediaDetailsViewModel(
 
     class MediaDetailsViewModelFactory @AssistedInject constructor(
         @Assisted(MEDIA_ID_TAG) private val mediaId: Int,
-        private val getMediaDetailsUseCase: GetMediaDetailsUseCase,
+        private val getMediaItemUseCase: GetMediaItemUseCase,
         private val mapper: MediaDetailsMapper,
     ) : ViewModelProvider.Factory {
 
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MediaDetailsViewModel::class.java)
-            return MediaDetailsViewModel(mediaId, getMediaDetailsUseCase, mapper) as T
+            return MediaDetailsViewModel(mediaId, getMediaItemUseCase, mapper) as T
         }
 
         @AssistedFactory

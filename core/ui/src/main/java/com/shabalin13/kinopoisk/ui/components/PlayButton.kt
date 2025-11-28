@@ -33,7 +33,7 @@ fun PlayButton(
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.play_icon),
+            imageVector = ImageVector.vectorResource(R.drawable.core_play_icon),
             contentDescription = stringResource(R.string.play_button_content_description),
             tint = Color.White,
             modifier = Modifier.size(24.dp)

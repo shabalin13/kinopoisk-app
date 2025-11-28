@@ -1,10 +1,12 @@
 package com.shabalin13.kinopoisk.mediaDetails.presentation.mappers
 
-import com.shabalin13.kinopoisk.domain.mediaDetails.models.MediaDetails
+import com.shabalin13.kinopoisk.domain.model.MediaItem
+import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsScope
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
 import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
 import javax.inject.Inject
 
+@MediaDetailsScope
 internal class MediaDetailsMapper @Inject constructor(
     private val headerMapper: MediaDetailsHeaderMapper,
     private val seasonsMapper: MediaDetailsSeasonsMapper,
@@ -13,29 +15,29 @@ internal class MediaDetailsMapper @Inject constructor(
     private val mediaItemsMapper: MediaDetailsMediaItemsMapper,
     private val statisticsMapper: MediaDetailsStatisticsMapper,
 ) {
-    fun mapDomainToUiModel(mediaDetails: MediaDetails): MediaDetailsUiModel {
+    fun mapDomainToUiModel(mediaItem: MediaItem): MediaDetailsUiModel {
         return MediaDetailsUiModel(
-            id = mediaDetails.id,
-            headerInfo = headerMapper.mapToHeaderInfo(mediaDetails),
-            seasonsInfo = seasonsMapper.mapToSeasonsInfo(mediaDetails.seasonsInfo),
-            videosInfo = mediaDetails.videos.map {
+            id = mediaItem.id,
+            headerInfo = headerMapper.mapToHeaderInfo(mediaItem),
+            seasonsInfo = seasonsMapper.mapToSeasonsInfo(mediaItem.seasonsInfo),
+            videosInfo = mediaItem.videos.map {
                 VideoInfoUiModel(
                     posterUrl = it.posterUrl,
                     videoUrl = it.videoUrl,
                     name = it.name
                 )
             }.takeIf { it.isNotEmpty() },
-            actorsInfo = peopleMapper.mapActorsToActorsInfo(mediaDetails.actors),
-            contributorsInfo = peopleMapper.mapContributorsToContributorsInfo(mediaDetails.contributors),
-            factsInfo = notesMapper.mapFactsToFactsInfo(mediaDetails.facts),
-            bloopersInfo = notesMapper.mapBloopersToBloopersInfo(mediaDetails.bloopers),
+            actorsInfo = peopleMapper.mapActorsToActorsInfo(mediaItem.actors),
+            contributorsInfo = peopleMapper.mapContributorsToContributorsInfo(mediaItem.contributors),
+            factsInfo = notesMapper.mapFactsToFactsInfo(mediaItem.facts),
+            bloopersInfo = notesMapper.mapBloopersToBloopersInfo(mediaItem.bloopers),
             linkedMediaItemsInfo = mediaItemsMapper.mapLinkedMediaItemsToLinkedMediaItemsInfo(
-                mediaDetails.linkedMediaItems
+                mediaItem.linkedMediaItems
             ),
             similarMediaItemsInfo = mediaItemsMapper.mapSimilarMediaItemsToSimilarMediaItemsInfo(
-                mediaDetails.similarMediaItems
+                mediaItem.similarMediaItems
             ),
-            statisticsInfos = statisticsMapper.mapToStatisticsInfos(mediaDetails)
+            statisticsInfos = statisticsMapper.mapToStatisticsInfos(mediaItem)
         )
     }
 }

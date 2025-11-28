@@ -17,23 +17,28 @@ import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsDependencies
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsEffect
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsScreen
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsViewModel
+import com.shabalin13.kinopoisk.navigation.AppRoute
 
-internal fun NavGraphBuilder.mediaDetailsNavGraph(
+fun NavGraphBuilder.mediaDetailsNavGraph(
     navController: NavController,
     dependencies: MediaDetailsDependencies,
     onNavigateToMediaDetails: (mediaId: Int) -> Unit,
 ) {
     navigation(
-        startDestination = MediaDetailsRoute.MediaDetailsMain.route,
-        route = MediaDetailsRoute.MediaDetailsGraph.route,
-        arguments = listOf(navArgument(MediaDetailsRoute.MEDIA_ID_KEY) { type = NavType.IntType })
+        startDestination = AppRoute.MediaDetails.Main.route,
+        route = AppRoute.MediaDetails.Graph.route,
+        arguments = listOf(
+            navArgument(AppRoute.MediaDetails.MEDIA_ID_KEY) {
+                type = NavType.IntType
+            }
+        )
     ) {
-        composable(MediaDetailsRoute.MediaDetailsMain.route) { backStackEntry ->
+        composable(AppRoute.MediaDetails.Main.route) { backStackEntry ->
             val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(MediaDetailsRoute.MediaDetailsGraph.route)
+                navController.getBackStackEntry(AppRoute.MediaDetails.Graph.route)
             }
             val arguments = requireNotNull(parentEntry.arguments)
-            val mediaId = arguments.getInt(MediaDetailsRoute.MEDIA_ID_KEY)
+            val mediaId = arguments.getInt(AppRoute.MediaDetails.MEDIA_ID_KEY)
 
             val componentViewModel: MediaDetailsComponentViewModel = viewModel(
                 viewModelStoreOwner = parentEntry,

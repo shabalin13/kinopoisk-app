@@ -7,8 +7,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.shabalin13.kinopoisk.domain.mediaCatalog.models.MediaCatalogItem
-import com.shabalin13.kinopoisk.domain.mediaCatalog.usecases.GetMediaCatalogPagingSourceUseCase
+import com.shabalin13.kinopoisk.domain.model.MediaCatalogItem
+import com.shabalin13.kinopoisk.domain.usecase.GetMediaCatalogPagingSourceUseCase
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.mappers.MediaCatalogMapper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

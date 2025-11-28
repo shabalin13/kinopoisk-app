@@ -10,8 +10,10 @@ import dagger.Module
 @Module
 internal interface AppModule {
     @Binds
+    @AppScope
     fun bindResourceProvider(resourceProviderImpl: ResourceProviderImpl): ResourceProvider
 
     @Binds
+    @AppScope
     fun bindDurationFormatter(durationFormatterImpl: DurationFormatterImpl): DurationFormatter
 }

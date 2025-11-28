@@ -57,7 +57,7 @@ fun ShowAllCard(
             contentAlignment = Alignment.Center
         ) {
             Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.arrow_forward_icon),
+                imageVector = ImageVector.vectorResource(R.drawable.core_arrow_forward_icon),
                 contentDescription = stringResource(R.string.show_all_card_title),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(24.dp)

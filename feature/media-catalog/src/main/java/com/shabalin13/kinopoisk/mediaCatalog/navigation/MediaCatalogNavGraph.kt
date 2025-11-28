@@ -12,19 +12,21 @@ import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogComponentViewModel
 import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogDependencies
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogScreen
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogViewModel
+import com.shabalin13.kinopoisk.navigation.AppRoute
 
-internal fun NavGraphBuilder.mediaCatalogNavGraph(
+fun NavGraphBuilder.mediaCatalogNavGraph(
     navController: NavController,
     dependencies: MediaCatalogDependencies,
     onMediaCatalogItemClick: (mediaId: Int) -> Unit,
+//    mediaCatalogNavigator: MediaDetailsNavigator, // TODO("add or remove")
 ) {
     navigation(
-        startDestination = MediaCatalogRoute.MediaCatalogMain.route,
-        route = MediaCatalogRoute.MediaCatalogGraph.route
+        startDestination = AppRoute.MediaCatalog.Main.route,
+        route = AppRoute.MediaCatalog.Graph.route
     ) {
-        composable(MediaCatalogRoute.MediaCatalogMain.route) { backStackEntry ->
+        composable(AppRoute.MediaCatalog.Main.route) { backStackEntry ->
             val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(MediaCatalogRoute.MediaCatalogGraph.route)
+                navController.getBackStackEntry(AppRoute.MediaCatalog.Graph.route)
             }
 
             val componentViewModel: MediaCatalogComponentViewModel = viewModel(

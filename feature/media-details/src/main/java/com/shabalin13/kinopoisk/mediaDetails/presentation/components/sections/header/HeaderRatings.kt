@@ -29,7 +29,7 @@ internal fun HeaderRatings(
     ) {
         ratingsInfo.kpRating?.let { kpRating ->
             RatingChip(
-                icon = ImageVector.vectorResource(R.drawable.kinopoisk_icon),
+                icon = ImageVector.vectorResource(R.drawable.core_kinopoisk_icon),
                 rating = kpRating,
                 modifier = Modifier
             )
@@ -37,7 +37,7 @@ internal fun HeaderRatings(
 
         ratingsInfo.imdbRating?.let { imdbRating ->
             RatingChip(
-                icon = ImageVector.vectorResource(R.drawable.imdb_icon),
+                icon = ImageVector.vectorResource(R.drawable.core_imdb_icon),
                 rating = imdbRating,
                 modifier = Modifier
             )

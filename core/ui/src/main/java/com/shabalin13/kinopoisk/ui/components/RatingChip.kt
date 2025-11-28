@@ -65,7 +65,7 @@ fun RatingChipPreview() {
     KinopoiskTheme {
         Surface {
             RatingChip(
-                icon = ImageVector.vectorResource(R.drawable.kinopoisk_icon),
+                icon = ImageVector.vectorResource(R.drawable.core_kinopoisk_icon),
                 rating = RatingUiModel.from(8.7),
                 modifier = Modifier
             )
@@ -81,7 +81,7 @@ fun RatingChipPreview2() {
     KinopoiskTheme {
         Surface {
             RatingChip(
-                icon = ImageVector.vectorResource(R.drawable.imdb_icon),
+                icon = ImageVector.vectorResource(R.drawable.core_imdb_icon),
                 rating = RatingUiModel.from(6.7),
                 modifier = Modifier
             )
