@@ -18,11 +18,12 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsEffect
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsScreen
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsViewModel
 import com.shabalin13.kinopoisk.navigation.AppRoute
+import com.shabalin13.kinopoisk.navigation.navigator.MediaDetailsNavigator
 
 fun NavGraphBuilder.mediaDetailsNavGraph(
     navController: NavController,
     dependencies: MediaDetailsDependencies,
-    onNavigateToMediaDetails: (mediaId: Int) -> Unit,
+    navigator: MediaDetailsNavigator,
 ) {
     navigation(
         startDestination = AppRoute.MediaDetails.Main.route,
@@ -56,12 +57,10 @@ fun NavGraphBuilder.mediaDetailsNavGraph(
                 viewModel.effect.collect { effect ->
                     when (effect) {
                         MediaDetailsEffect.NavigateBack -> {
-                            if (navController.previousBackStackEntry != null) {
-                                navController.navigateUp()
-                            }
+                            navigator.navigateBack()
                         }
 
-                        is MediaDetailsEffect.NavigateToMediaDetails -> onNavigateToMediaDetails(
+                        is MediaDetailsEffect.NavigateToMediaDetails -> navigator.navigateToMediaDetails(
                             effect.mediaId
                         )
 

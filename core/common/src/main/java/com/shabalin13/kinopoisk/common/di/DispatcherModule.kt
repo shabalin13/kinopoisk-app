@@ -1,6 +1,10 @@
 package com.shabalin13.kinopoisk.common.di
 
-/*
+import dagger.Module
+import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+
 @Module
 internal class DispatcherModule {
     @DispatcherScope
@@ -13,4 +17,3 @@ internal class DispatcherModule {
     @Provides
     fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 }
- */

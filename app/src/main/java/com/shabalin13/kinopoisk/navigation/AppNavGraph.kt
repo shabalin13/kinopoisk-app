@@ -25,19 +25,13 @@ internal fun AppNavGraph(
         mediaCatalogNavGraph(
             navController = navController,
             dependencies = featureDependencies,
-            // TODO("maybe better to pass appNavigator")
-            onMediaCatalogItemClick = { mediaId ->
-                appNavigator.navigateToMediaDetails(mediaId)
-            },
+            navigator = appNavigator
         )
 
         mediaDetailsNavGraph(
             navController = navController,
             dependencies = featureDependencies,
-            // TODO("maybe better to pass appNavigator")
-            onNavigateToMediaDetails = { mediaId ->
-                appNavigator.navigateToMediaDetails(mediaId)
-            }
+            navigator = appNavigator
         )
     }
 }

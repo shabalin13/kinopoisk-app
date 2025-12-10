@@ -20,18 +20,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.shabalin13.kinopoisk.mediaDetails.presentation.components.MediaDetailsDataContent
-import com.shabalin13.kinopoisk.mediaDetails.presentation.components.MediaDetailsErrorContent
-import com.shabalin13.kinopoisk.mediaDetails.presentation.components.MediaDetailsLoadingContent
-import com.shabalin13.kinopoisk.mediaDetails.presentation.models.DescriptionInfoUiModel
-import com.shabalin13.kinopoisk.mediaDetails.presentation.models.HeaderInfoUiModel
-import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MediaDetailsUiModel
-import com.shabalin13.kinopoisk.mediaDetails.presentation.models.MetaInfoUiModel
-import com.shabalin13.kinopoisk.mediaDetails.presentation.models.VideoInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.component.MediaDetailsDataContent
+import com.shabalin13.kinopoisk.mediaDetails.presentation.component.MediaDetailsErrorContent
+import com.shabalin13.kinopoisk.mediaDetails.presentation.component.MediaDetailsLoadingContent
+import com.shabalin13.kinopoisk.mediaDetails.presentation.model.HeaderInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.model.MediaItemUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.model.MetaInfoUiModel
+import com.shabalin13.kinopoisk.mediaDetails.presentation.model.VideoUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.mediaDetails.R as mediaDetailsR
 import com.shabalin13.kinopoisk.ui.R as uiR
 
+// TODO("Check")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MediaDetailsScreen(
@@ -137,7 +137,7 @@ internal fun MediaDetailsScreenPreview4() {
         Surface {
             MediaDetailsScreen(
                 state = MediaDetailsState.Data(
-                    MediaDetailsUiModel(
+                    MediaItemUiModel(
                         689,
                         headerInfo = HeaderInfoUiModel(
                             name = "Гарри Поттер и философский камень",
@@ -146,36 +146,33 @@ internal fun MediaDetailsScreenPreview4() {
                                 alternativeName = "Harry Potter and the Sorcerer's Stone",
                                 summary = "2001, фэнтэзи, приключения\nВеликобритания, 2 ч 32 мин, 12+",
                             ),
-                            descriptionInfo = DescriptionInfoUiModel(
-                                description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
-                                    "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
-                                    "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
-                                    "день рождения Гарри все меняется...",
-                                ageRating = "12+"
-                            )
+                            description = "Жизнь десятилетнего Гарри Поттера нельзя назвать сладкой: " +
+                                "родители умерли, едва ему исполнился год, а от дяди и тети, взявших сироту " +
+                                "на воспитание, достаются лишь тычки да подзатыльники. Но в одиннадцатые " +
+                                "день рождения Гарри все меняется..."
                         ),
-                        videosInfo = listOf(
-                            VideoInfoUiModel(
+                        videos = listOf(
+                            VideoUiModel(
                                 videoUrl = "https://www.youtube.com/embed/ly3tLiu-bmc",
                                 posterUrl = "https://img.youtube.com/vi/ly3tLiu-bmc/hqdefault.jpg",
                                 name = "Гарри Поттер и философский камень"
                             ),
-                            VideoInfoUiModel(
+                            VideoUiModel(
                                 videoUrl = "https://www.youtube.com/embed/TXB31YDIJwk",
                                 posterUrl = "https://img.youtube.com/vi/TXB31YDIJwk/hqdefault.jpg",
                                 name = "Гарри Поттер и философский камень - Трейлер"
                             ),
-                            VideoInfoUiModel(
+                            VideoUiModel(
                                 videoUrl = "https://www.youtube.com/embed/k71hjl3zWsA",
                                 posterUrl = "https://img.youtube.com/vi/k71hjl3zWsA/hqdefault.jpg",
                                 name = "Trailer 3"
                             ),
-                            VideoInfoUiModel(
+                            VideoUiModel(
                                 videoUrl = "https://www.youtube.com/embed/Q61YhARNOPg",
                                 posterUrl = "https://img.youtube.com/vi/Q61YhARNOPg/hqdefault.jpg",
                                 name = "Trailer 2"
                             ),
-                            VideoInfoUiModel(
+                            VideoUiModel(
                                 videoUrl = "https://www.youtube.com/embed/PbdM1db3JbY",
                                 posterUrl = "https://img.youtube.com/vi/PbdM1db3JbY/hqdefault.jpg",
                                 name = "Trailer"

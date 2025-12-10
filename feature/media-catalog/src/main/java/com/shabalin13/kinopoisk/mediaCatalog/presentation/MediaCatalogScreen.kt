@@ -53,7 +53,7 @@ internal fun MediaCatalogScreen(
 
             LaunchedEffect(searchQuery) {
                 handleIntent(
-                    MediaCatalogIntent.SearchMediaCatalogItemsForQuery(
+                    MediaCatalogIntent.SearchQueryChanged(
                         searchQuery
                     )
                 )

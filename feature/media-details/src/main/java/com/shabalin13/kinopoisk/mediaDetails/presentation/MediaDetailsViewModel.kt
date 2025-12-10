@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.shabalin13.kinopoisk.domain.usecase.GetMediaItemUseCase
-import com.shabalin13.kinopoisk.mediaDetails.presentation.mappers.MediaDetailsMapper
+import com.shabalin13.kinopoisk.mediaDetails.presentation.mapper.MediaItemMapper
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -18,13 +18,14 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+// TODO("Check")
 internal class MediaDetailsViewModel(
     private val mediaId: Int,
     private val getMediaItemUseCase: GetMediaItemUseCase,
-    private val mapper: MediaDetailsMapper,
+    private val mapper: MediaItemMapper,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<MediaDetailsState>(MediaDetailsState.Loading)
+    private val _state = MutableStateFlow<MediaDetailsState>(MediaDetailsState.Initial)
     val state = _state.asStateFlow()
 
     private val _effect = Channel<MediaDetailsEffect>(Channel.BUFFERED)
@@ -128,11 +129,11 @@ internal class MediaDetailsViewModel(
     private fun onRateButtonClicked() {
         _state.update { state ->
             if (state is MediaDetailsState.Data) {
-                val current = state.mediaDetails.headerInfo.actionButtonsInfo.isRated
+                val current = state.mediaItem.headerInfo.actionButtonsInfo.isRated
                 state.copy(
-                    mediaDetails = state.mediaDetails.copy(
-                        headerInfo = state.mediaDetails.headerInfo.copy(
-                            actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
+                    mediaItem = state.mediaItem.copy(
+                        headerInfo = state.mediaItem.headerInfo.copy(
+                            actionButtonsInfo = state.mediaItem.headerInfo.actionButtonsInfo.copy(
                                 isRated = !current
                             )
                         )
@@ -147,11 +148,11 @@ internal class MediaDetailsViewModel(
     private fun onToggleWatchlistButtonClicked() {
         _state.update { state ->
             if (state is MediaDetailsState.Data) {
-                val current = state.mediaDetails.headerInfo.actionButtonsInfo.isInWatchlist
+                val current = state.mediaItem.headerInfo.actionButtonsInfo.isInWatchlist
                 state.copy(
-                    mediaDetails = state.mediaDetails.copy(
-                        headerInfo = state.mediaDetails.headerInfo.copy(
-                            actionButtonsInfo = state.mediaDetails.headerInfo.actionButtonsInfo.copy(
+                    mediaItem = state.mediaItem.copy(
+                        headerInfo = state.mediaItem.headerInfo.copy(
+                            actionButtonsInfo = state.mediaItem.headerInfo.actionButtonsInfo.copy(
                                 isInWatchlist = !current
                             )
                         )
@@ -166,7 +167,7 @@ internal class MediaDetailsViewModel(
     class MediaDetailsViewModelFactory @AssistedInject constructor(
         @Assisted(MEDIA_ID_TAG) private val mediaId: Int,
         private val getMediaItemUseCase: GetMediaItemUseCase,
-        private val mapper: MediaDetailsMapper,
+        private val mapper: MediaItemMapper,
     ) : ViewModelProvider.Factory {
 
         @Suppress("UNCHECKED_CAST")

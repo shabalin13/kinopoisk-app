@@ -1,3 +1,3 @@
 package com.shabalin13.kinopoisk.navigation.navigator
 
-interface AppNavigator : MediaDetailsNavigator
+interface AppNavigator : MediaCatalogNavigator, MediaDetailsNavigator

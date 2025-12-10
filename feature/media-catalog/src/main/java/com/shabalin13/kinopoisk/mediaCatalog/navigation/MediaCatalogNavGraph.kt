@@ -13,12 +13,12 @@ import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogDependencies
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogScreen
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogViewModel
 import com.shabalin13.kinopoisk.navigation.AppRoute
+import com.shabalin13.kinopoisk.navigation.navigator.MediaCatalogNavigator
 
 fun NavGraphBuilder.mediaCatalogNavGraph(
     navController: NavController,
     dependencies: MediaCatalogDependencies,
-    onMediaCatalogItemClick: (mediaId: Int) -> Unit,
-//    mediaCatalogNavigator: MediaDetailsNavigator, // TODO("add or remove")
+    navigator: MediaCatalogNavigator,
 ) {
     navigation(
         startDestination = AppRoute.MediaCatalog.Main.route,
@@ -43,7 +43,10 @@ fun NavGraphBuilder.mediaCatalogNavGraph(
             MediaCatalogScreen(
                 state = state,
                 handleIntent = viewModel::handleIntent,
-                onMediaCatalogItemClick = onMediaCatalogItemClick
+                // TODO("export into Effect")
+                onMediaCatalogItemClick = { mediaId ->
+                    navigator.navigateToMediaDetails(mediaId)
+                }
             )
         }
     }

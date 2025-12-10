@@ -1,6 +1,6 @@
 package com.shabalin13.kinopoisk.common.di
 
-/*
+import javax.inject.Scope
+
 @Scope
-annotation class DispatcherScope
- */
+internal annotation class DispatcherScope

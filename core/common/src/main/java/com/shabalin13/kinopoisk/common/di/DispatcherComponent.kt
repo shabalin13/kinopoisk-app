@@ -1,17 +1,14 @@
 package com.shabalin13.kinopoisk.common.di
 
-/*
+import dagger.Component
+
 @DispatcherScope
 @Component(
     modules = [DispatcherModule::class]
 )
-interface DispatcherComponent {
-//    @IoDispatcher val ioDispatcher: CoroutineDispatcher
-    val dispatcher: CoroutineDispatcher
-
+interface DispatcherComponent : DispatcherDependencies {
     @Component.Factory
     interface Factory {
         fun create(): DispatcherComponent
     }
 }
- */

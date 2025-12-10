@@ -25,7 +25,7 @@ import com.bumptech.glide.integration.compose.placeholder
 import com.shabalin13.kinopoisk.mediaCatalog.R
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
-import com.shabalin13.kinopoisk.ui.models.RatingUiModel
+import com.shabalin13.kinopoisk.ui.model.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
 import com.shabalin13.kinopoisk.ui.theme.RatingColors
@@ -49,7 +49,7 @@ internal fun MediaCatalogItemCard(
         horizontalArrangement = Arrangement.spacedBy(Spacings.medium)
     ) {
         GlideImage(
-            model = mediaCatalogItem.posterPreviewUrl,
+            model = mediaCatalogItem.posterUrl,
             contentDescription = stringResource(R.string.poster_content_description),
             contentScale = ContentScale.Crop,
             loading = placeholder(R.drawable.media_catalog_poster_placeholder),
@@ -106,7 +106,7 @@ internal fun MediaCatalogItemCardPreview() {
             mediaCatalogItem = MediaCatalogItemUiModel(
                 id = 689,
                 name = "Гарри Поттер и философский камень",
-                posterPreviewUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
+                posterUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
                     "1898899/27ed5c19-a045-49dd-8624-5f629c5d96e0/x1000",
                 additionalInfo = "Harry Potter and the Sorcerer's Stone, 2001",
                 rating = RatingUiModel(

@@ -23,7 +23,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
-import com.shabalin13.kinopoisk.ui.models.RatingUiModel
+import com.shabalin13.kinopoisk.ui.model.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
 import com.shabalin13.kinopoisk.ui.theme.RatingColors
@@ -99,7 +99,7 @@ internal fun MediaCatalogListContentPreview() {
                         MediaCatalogItemUiModel(
                             id = 689,
                             name = "Гарри Поттер и философский камень",
-                            posterPreviewUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
+                            posterUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
                                 "1898899/27ed5c19-a045-49dd-8624-5f629c5d96e0/x1000",
                             additionalInfo = "Harry Potter and the Sorcerer's Stone Part 1, 2001",
                             rating = RatingUiModel(value = "8.3", color = RatingColors.high)
@@ -107,7 +107,7 @@ internal fun MediaCatalogListContentPreview() {
                         MediaCatalogItemUiModel(
                             id = 690,
                             name = "Гарри Поттер и философский камень 2",
-                            posterPreviewUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
+                            posterUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
                                 "1898899/27ed5c19-a045-49dd-8624-5f629c5d96e0/x1000",
                             additionalInfo = "Harry Potter and the Sorcerer's Stone, 2001",
                             rating = RatingUiModel(
@@ -118,7 +118,7 @@ internal fun MediaCatalogListContentPreview() {
                         MediaCatalogItemUiModel(
                             id = 691,
                             name = "Гарри Поттер и философский камень 3",
-                            posterPreviewUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
+                            posterUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
                                 "1898899/27ed5c19-a045-49dd-8624-5f629c5d96e0/x1000",
                             additionalInfo = "Harry Potter and the Sorcerer's Stone, 2001",
                             rating = RatingUiModel(value = "3.9", color = RatingColors.low)
@@ -126,7 +126,7 @@ internal fun MediaCatalogListContentPreview() {
                         MediaCatalogItemUiModel(
                             id = 692,
                             name = "Гарри Поттер и философский камень 4",
-                            posterPreviewUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
+                            posterUrl = "https://image.openmoviedb.com/kinopoisk-images/" +
                                 "1898899/27ed5c19-a045-49dd-8624-5f629c5d96e0/x1000",
                             additionalInfo = "Harry Potter and the Sorcerer's Stone, 2001",
                             rating = RatingUiModel(value = "2.0", color = RatingColors.low)
