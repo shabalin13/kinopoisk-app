@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaCatalog.presentation.models
+package com.shabalin13.kinopoisk.mediaCatalog.presentation.model
 
 import com.shabalin13.kinopoisk.ui.model.RatingUiModel
 

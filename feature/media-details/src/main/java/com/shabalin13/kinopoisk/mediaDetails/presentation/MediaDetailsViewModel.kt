@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// TODO("Check")
 internal class MediaDetailsViewModel(
     private val mediaId: Int,
     private val getMediaItemUseCase: GetMediaItemUseCase,

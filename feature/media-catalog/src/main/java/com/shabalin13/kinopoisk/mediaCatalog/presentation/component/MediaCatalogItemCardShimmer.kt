@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaCatalog.presentation.components
+package com.shabalin13.kinopoisk.mediaCatalog.presentation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

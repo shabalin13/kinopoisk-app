@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaCatalog.presentation.components
+package com.shabalin13.kinopoisk.mediaCatalog.presentation.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

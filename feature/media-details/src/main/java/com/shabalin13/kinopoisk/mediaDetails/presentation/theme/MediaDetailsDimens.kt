@@ -2,7 +2,6 @@ package com.shabalin13.kinopoisk.mediaDetails.presentation.theme
 
 import androidx.compose.ui.unit.dp
 
-// TODO("Check")
 internal object MediaDetailsDimens {
     object HeaderPoster {
         val height = 315.dp

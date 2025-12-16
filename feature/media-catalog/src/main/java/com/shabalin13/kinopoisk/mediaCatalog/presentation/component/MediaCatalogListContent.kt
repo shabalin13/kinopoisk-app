@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaCatalog.presentation.components
+package com.shabalin13.kinopoisk.mediaCatalog.presentation.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.model.MediaCatalogItemUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
 import com.shabalin13.kinopoisk.ui.model.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme

@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaCatalog.navigation
 
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -10,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogComponentViewModel
 import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogDependencies
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogEffect
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogScreen
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogViewModel
 import com.shabalin13.kinopoisk.navigation.AppRoute
@@ -40,13 +42,19 @@ fun NavGraphBuilder.mediaCatalogNavGraph(
 
             val state by viewModel.state.collectAsStateWithLifecycle()
 
+            LaunchedEffect(viewModel.effect) {
+                viewModel.effect.collect { effect ->
+                    when (effect) {
+                        is MediaCatalogEffect.NavigateToMediaDetails -> navigator.navigateToMediaDetails(
+                            effect.mediaId
+                        )
+                    }
+                }
+            }
+
             MediaCatalogScreen(
                 state = state,
-                handleIntent = viewModel::handleIntent,
-                // TODO("export into Effect")
-                onMediaCatalogItemClick = { mediaId ->
-                    navigator.navigateToMediaDetails(mediaId)
-                }
+                handleIntent = viewModel::handleIntent
             )
         }
     }

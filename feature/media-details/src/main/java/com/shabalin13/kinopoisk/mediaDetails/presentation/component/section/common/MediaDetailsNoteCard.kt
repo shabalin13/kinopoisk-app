@@ -29,7 +29,6 @@ import com.shabalin13.kinopoisk.mediaDetails.presentation.theme.MediaDetailsDime
 import com.shabalin13.kinopoisk.ui.component.SpoilerCard
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 
-// TODO("Check")
 @Composable
 internal fun MediaDetailsNoteCard(
     note: NoteUiModel,

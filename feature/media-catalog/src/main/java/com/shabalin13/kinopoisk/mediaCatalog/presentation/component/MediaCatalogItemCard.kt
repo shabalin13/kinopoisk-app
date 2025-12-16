@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaCatalog.presentation.components
+package com.shabalin13.kinopoisk.mediaCatalog.presentation.component
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +23,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
 import com.shabalin13.kinopoisk.mediaCatalog.R
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.model.MediaCatalogItemUiModel
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.theme.MediaCatalogDimens
 import com.shabalin13.kinopoisk.ui.model.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme

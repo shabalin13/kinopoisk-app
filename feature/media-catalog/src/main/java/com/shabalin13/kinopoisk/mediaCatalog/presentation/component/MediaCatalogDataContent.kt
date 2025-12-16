@@ -1,4 +1,4 @@
-package com.shabalin13.kinopoisk.mediaCatalog.presentation.components
+package com.shabalin13.kinopoisk.mediaCatalog.presentation.component
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -14,8 +14,9 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.shabalin13.kinopoisk.mediaCatalog.R
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogIntent
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogState
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.models.MediaCatalogItemUiModel
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.model.MediaCatalogItemUiModel
 import com.shabalin13.kinopoisk.ui.model.RatingUiModel
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.RatingColors
@@ -24,7 +25,7 @@ import kotlinx.coroutines.flow.flowOf
 @Composable
 internal fun MediaCatalogDataContent(
     state: MediaCatalogState.Data,
-    onMediaCatalogItemClick: (mediaId: Int) -> Unit,
+    handleIntent: (MediaCatalogIntent) -> Unit,
     snackbarHostState: SnackbarHostState,
     modifier: Modifier = Modifier,
 ) {
@@ -53,7 +54,8 @@ internal fun MediaCatalogDataContent(
         is LoadState.Loading -> MediaCatalogLoadingContent(modifier)
 
         is LoadState.Error -> MediaCatalogErrorContent(
-            message = refreshLoadState.error.localizedMessage ?: unknownErrorMessage,
+            message = refreshLoadState.error.localizedMessage
+                ?: unknownErrorMessage,
             onRetryClick = { mediaCatalogItems.retry() },
             modifier = modifier
         )
@@ -63,7 +65,7 @@ internal fun MediaCatalogDataContent(
             listState = listState,
             onMediaCatalogItemClick = { mediaId ->
                 focusManager.clearFocus()
-                onMediaCatalogItemClick(mediaId)
+                handleIntent(MediaCatalogIntent.MediaCatalogItemCardClicked(mediaId))
             },
             modifier = modifier
         )
@@ -118,7 +120,7 @@ fun MediaCatalogDataContentPreview() {
                     )
                 )
             ),
-            onMediaCatalogItemClick = { mediaId -> println("Selected MediaCatalogItemId: $mediaId") },
+            handleIntent = {},
             snackbarHostState = remember { SnackbarHostState() },
             modifier = Modifier.fillMaxSize()
         )

@@ -20,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.components.MediaCatalogDataContent
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.components.MediaCatalogInitialContent
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.components.MediaCatalogSearchBar
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.component.MediaCatalogDataContent
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.component.MediaCatalogInitialContent
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.component.MediaCatalogSearchBar
 import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.ui.theme.Paddings
 
@@ -30,7 +30,6 @@ import com.shabalin13.kinopoisk.ui.theme.Paddings
 internal fun MediaCatalogScreen(
     state: MediaCatalogState,
     handleIntent: (intent: MediaCatalogIntent) -> Unit,
-    onMediaCatalogItemClick: (mediaId: Int) -> Unit,
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val focusManager = LocalFocusManager.current
@@ -76,7 +75,7 @@ internal fun MediaCatalogScreen(
 
                 is MediaCatalogState.Data -> MediaCatalogDataContent(
                     state = state,
-                    onMediaCatalogItemClick = onMediaCatalogItemClick,
+                    handleIntent = handleIntent,
                     snackbarHostState = snackbarHostState,
                     modifier = Modifier
                         .fillMaxSize()
@@ -93,7 +92,6 @@ internal fun MediaCatalogScreenPreview() {
         MediaCatalogScreen(
             state = MediaCatalogState.Initial,
             handleIntent = { },
-            onMediaCatalogItemClick = { mediaId -> println("Selected MediaCatalogItemId: $mediaId") }
         )
     }
 }

@@ -9,9 +9,11 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.shabalin13.kinopoisk.domain.model.MediaCatalogItem
 import com.shabalin13.kinopoisk.domain.usecase.GetMediaCatalogPagingSourceUseCase
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.mappers.MediaCatalogItemMapper
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.mapper.MediaCatalogItemMapper
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogEffect
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.debounce
@@ -20,7 +22,9 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 internal class MediaCatalogViewModel(
@@ -30,6 +34,9 @@ internal class MediaCatalogViewModel(
 
     private val _state = MutableStateFlow<MediaCatalogState>(MediaCatalogState.Initial)
     val state = _state.asStateFlow()
+
+    private val _effect = Channel<MediaCatalogEffect>(Channel.BUFFERED)
+    val effect = _effect.receiveAsFlow()
 
     private val _query = MutableStateFlow("")
 
@@ -65,6 +72,12 @@ internal class MediaCatalogViewModel(
                 _query.update {
                     intent.query
                 }
+
+            is MediaCatalogIntent.MediaCatalogItemCardClicked -> {
+                viewModelScope.launch {
+                    _effect.send(MediaCatalogEffect.NavigateToMediaDetails(intent.mediaId))
+                }
+            }
         }
     }
 

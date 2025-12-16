@@ -31,7 +31,6 @@ import com.shabalin13.kinopoisk.ui.theme.KinopoiskTheme
 import com.shabalin13.kinopoisk.mediaDetails.R as mediaDetailsR
 import com.shabalin13.kinopoisk.ui.R as uiR
 
-// TODO("Check")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MediaDetailsScreen(
