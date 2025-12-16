@@ -6,6 +6,7 @@ import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsScope
 import com.shabalin13.kinopoisk.mediaDetails.presentation.model.MediaItemUiModel
 import javax.inject.Inject
 
+@Suppress("LongParameterList")
 @MediaDetailsScope
 internal class MediaItemMapper @Inject constructor(
     private val headerMapper: MediaItemHeaderMapper,

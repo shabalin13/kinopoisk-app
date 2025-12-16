@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="poster_content_description">Постер для медиа-контента</string>
+    <string name="media_details_top_bar_title">"Детальная информация"</string>
     <string name="rate_button_title">Оценить</string>
     <string name="toggle_watchlist_button_title">Буду смотреть</string>
     <string name="share_button_title">Поделиться</string>
@@ -29,5 +29,4 @@
     <string name="russia_fee_title">Сборы (в России)</string>
     <string name="usa_fee_title">Сборы (в США)</string>
     <string name="seasons_section_header_title">Сезоны и серии</string>
-    <string name="media_details_top_bar_title">"Детальная информация"</string>
 </resources>

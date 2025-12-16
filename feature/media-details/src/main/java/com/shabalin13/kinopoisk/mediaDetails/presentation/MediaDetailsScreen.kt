@@ -54,7 +54,7 @@ internal fun MediaDetailsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(uiR.string.back_button_content_description)
+                            contentDescription = stringResource(uiR.string.back_button_title)
                         )
                     }
                 }

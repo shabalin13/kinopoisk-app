@@ -34,7 +34,7 @@ fun PlayButton(
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.core_play_icon),
-            contentDescription = stringResource(R.string.play_button_content_description),
+            contentDescription = stringResource(R.string.play_button_title),
             tint = Color.White,
             modifier = Modifier.size(24.dp)
         )

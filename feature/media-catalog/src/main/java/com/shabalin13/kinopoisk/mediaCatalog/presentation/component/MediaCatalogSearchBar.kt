@@ -56,7 +56,7 @@ internal fun MediaCatalogSearchBar(
             Icon(
                 Icons.Default.Search,
                 contentDescription = stringResource(
-                    R.string.search_icon_content_description
+                    R.string.search_icon_title
                 )
             )
         },
@@ -68,7 +68,7 @@ internal fun MediaCatalogSearchBar(
                 }) {
                     Icon(
                         Icons.Filled.Close,
-                        contentDescription = stringResource(R.string.clear_search_icon_content_description)
+                        contentDescription = stringResource(R.string.clear_search_icon_title)
                     )
                 }
             }

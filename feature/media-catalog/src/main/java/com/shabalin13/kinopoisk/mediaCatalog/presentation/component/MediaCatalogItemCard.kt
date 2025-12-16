@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.bumptech.glide.integration.compose.CrossFade
@@ -50,7 +49,7 @@ internal fun MediaCatalogItemCard(
     ) {
         GlideImage(
             model = mediaCatalogItem.posterUrl,
-            contentDescription = stringResource(R.string.poster_content_description),
+            contentDescription = mediaCatalogItem.name,
             contentScale = ContentScale.Crop,
             loading = placeholder(R.drawable.media_catalog_poster_placeholder),
             failure = placeholder(R.drawable.media_catalog_poster_placeholder),

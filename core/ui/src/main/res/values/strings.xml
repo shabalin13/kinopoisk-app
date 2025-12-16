@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- TODO("add core_ui_ to each string resource") -->
 <resources>
     <string name="duration_hours_short">%1$d ч</string>
     <string name="duration_minutes_short">%1$d мин</string>
-    <string name="play_button_content_description">Играть</string>
+    <string name="play_button_title">Играть</string>
     <string name="show_all_card_title">Показать все</string>
     <string name="spoiler_card_title">Тут есть спойлеры!</string>
-    <string name="back_button_content_description">Назад</string>
+    <string name="back_button_title">Назад</string>
 </resources>

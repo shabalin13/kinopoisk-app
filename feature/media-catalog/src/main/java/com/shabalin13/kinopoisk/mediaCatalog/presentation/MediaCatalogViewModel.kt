@@ -10,7 +10,6 @@ import androidx.paging.map
 import com.shabalin13.kinopoisk.domain.model.MediaCatalogItem
 import com.shabalin13.kinopoisk.domain.usecase.GetMediaCatalogPagingSourceUseCase
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.mapper.MediaCatalogItemMapper
-import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogEffect
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.Channel
