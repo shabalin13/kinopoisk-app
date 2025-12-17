@@ -5,35 +5,33 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.shabalin13.kinopoisk.di.FeatureDependencies
-import com.shabalin13.kinopoisk.mediaCatalog.navigation.MediaCatalogEntry
-import com.shabalin13.kinopoisk.mediaDetails.navigation.MediaDetailsEntry
+import com.shabalin13.kinopoisk.mediaCatalog.navigation.mediaCatalogNavGraph
+import com.shabalin13.kinopoisk.mediaDetails.navigation.mediaDetailsNavGraph
+import com.shabalin13.kinopoisk.navigation.navigator.AppNavigator
 
 @Composable
-fun AppNavGraph(
+internal fun AppNavGraph(
     navController: NavHostController,
+    appNavigator: AppNavigator,
     featureDependencies: FeatureDependencies,
     modifier: Modifier = Modifier,
 ) {
     NavHost(
         navController = navController,
-        startDestination = MediaCatalogEntry.getRoute(),
+        startDestination = AppRoute.MediaCatalog.Graph.route,
         modifier = modifier,
         route = AppRoute.AppGraph.route
     ) {
-        MediaCatalogEntry.getNavGraph(
+        mediaCatalogNavGraph(
             navController = navController,
             dependencies = featureDependencies,
-            onMediaCatalogItemClick = { mediaId ->
-                navController.navigate(MediaDetailsEntry.getRoute(mediaId))
-            }
-        ).invoke(this)
+            navigator = appNavigator
+        )
 
-        MediaDetailsEntry.getNavGraph(
+        mediaDetailsNavGraph(
             navController = navController,
             dependencies = featureDependencies,
-            onNavigateToMediaDetails = { mediaId ->
-                navController.navigate(MediaDetailsEntry.getRoute(mediaId))
-            }
-        ).invoke(this)
+            navigator = appNavigator
+        )
     }
 }

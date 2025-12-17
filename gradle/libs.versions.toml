@@ -24,6 +24,10 @@ composeShimmer = "1.3.3"
 pagingCompose = "3.3.6"
 kotlinxDatetime = "0.6.2"
 javaxInject = "1"
+kotlinxCoroutines = "1.10.2"
+minSdk = "27"
+targetSdk = "35"
+compileSdk = "35"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,6 +64,10 @@ compose-shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer",
 paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javaxInject" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -70,3 +78,11 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+kinopoisk-android-application-compose = { id = "com.shabalin13.kinopoisk.android.application.compose" }
+kinopoisk-android-application = { id = "com.shabalin13.kinopoisk.android.application" }
+kinopoisk-jvm-library = { id = "com.shabalin13.kinopoisk.jvm.library" }
+kinopoisk-android-library = { id = "com.shabalin13.kinopoisk.android.library" }
+kinopoisk-android-library-compose = { id = "com.shabalin13.kinopoisk.android.library.compose" }
+kinopoisk-android-feature = { id = "com.shabalin13.kinopoisk.android.feature" }
+kinopoisk-dagger = { id = "com.shabalin13.kinopoisk.dagger"}

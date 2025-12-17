@@ -3,8 +3,8 @@ package com.shabalin13.kinopoisk.mediaDetails.di
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsViewModel
 import dagger.Component
 
+@MediaDetailsScope
 @Component(
-    modules = [MediaDetailsModule::class],
     dependencies = [MediaDetailsDependencies::class]
 )
 internal interface MediaDetailsComponent {

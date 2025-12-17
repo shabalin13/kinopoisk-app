@@ -1,5 +1,6 @@
 package com.shabalin13.kinopoisk.mediaCatalog.navigation
 
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -10,21 +11,24 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogComponentViewModel
 import com.shabalin13.kinopoisk.mediaCatalog.di.MediaCatalogDependencies
+import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogEffect
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogScreen
 import com.shabalin13.kinopoisk.mediaCatalog.presentation.MediaCatalogViewModel
+import com.shabalin13.kinopoisk.navigation.AppRoute
+import com.shabalin13.kinopoisk.navigation.navigator.MediaCatalogNavigator
 
-internal fun NavGraphBuilder.mediaCatalogNavGraph(
+fun NavGraphBuilder.mediaCatalogNavGraph(
     navController: NavController,
     dependencies: MediaCatalogDependencies,
-    onMediaCatalogItemClick: (mediaId: Int) -> Unit,
+    navigator: MediaCatalogNavigator,
 ) {
     navigation(
-        startDestination = MediaCatalogRoute.MediaCatalogMain.route,
-        route = MediaCatalogRoute.MediaCatalogGraph.route
+        startDestination = AppRoute.MediaCatalog.Main.route,
+        route = AppRoute.MediaCatalog.Graph.route
     ) {
-        composable(MediaCatalogRoute.MediaCatalogMain.route) { backStackEntry ->
+        composable(AppRoute.MediaCatalog.Main.route) { backStackEntry ->
             val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(MediaCatalogRoute.MediaCatalogGraph.route)
+                navController.getBackStackEntry(AppRoute.MediaCatalog.Graph.route)
             }
 
             val componentViewModel: MediaCatalogComponentViewModel = viewModel(
@@ -38,10 +42,19 @@ internal fun NavGraphBuilder.mediaCatalogNavGraph(
 
             val state by viewModel.state.collectAsStateWithLifecycle()
 
+            LaunchedEffect(viewModel.effect) {
+                viewModel.effect.collect { effect ->
+                    when (effect) {
+                        is MediaCatalogEffect.NavigateToMediaDetails -> navigator.navigateToMediaDetails(
+                            effect.mediaId
+                        )
+                    }
+                }
+            }
+
             MediaCatalogScreen(
                 state = state,
-                handleIntent = viewModel::handleIntent,
-                onMediaCatalogItemClick = onMediaCatalogItemClick
+                handleIntent = viewModel::handleIntent
             )
         }
     }

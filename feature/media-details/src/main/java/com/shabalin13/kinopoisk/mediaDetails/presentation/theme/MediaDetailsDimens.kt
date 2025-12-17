@@ -3,7 +3,7 @@ package com.shabalin13.kinopoisk.mediaDetails.presentation.theme
 import androidx.compose.ui.unit.dp
 
 internal object MediaDetailsDimens {
-    object Poster {
+    object HeaderPoster {
         val height = 315.dp
         val width = 210.dp
     }
@@ -49,13 +49,13 @@ internal object MediaDetailsDimens {
         }
     }
 
-    object MediaItemCard {
+    object RelatedMediaItemCard {
         val height = 280.dp
         val width = 140.dp
 
         object Poster {
             val height = 210.dp
-            val width = MediaItemCard.width
+            val width = RelatedMediaItemCard.width
         }
     }
 }

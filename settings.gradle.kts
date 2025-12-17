@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -20,9 +21,13 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Kinopoisk"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
-include(":domain")
-include(":data")
-include(":feature:media-catalog")
+include(":core:domain")
+include(":core:network")
+include(":core:data")
 include(":core:ui")
+include(":core:navigation")
+include(":core:common")
+include(":feature:media-catalog")
 include(":feature:media-details")

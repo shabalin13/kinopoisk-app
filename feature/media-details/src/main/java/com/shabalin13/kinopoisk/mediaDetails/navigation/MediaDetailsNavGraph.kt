@@ -17,23 +17,29 @@ import com.shabalin13.kinopoisk.mediaDetails.di.MediaDetailsDependencies
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsEffect
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsScreen
 import com.shabalin13.kinopoisk.mediaDetails.presentation.MediaDetailsViewModel
+import com.shabalin13.kinopoisk.navigation.AppRoute
+import com.shabalin13.kinopoisk.navigation.navigator.MediaDetailsNavigator
 
-internal fun NavGraphBuilder.mediaDetailsNavGraph(
+fun NavGraphBuilder.mediaDetailsNavGraph(
     navController: NavController,
     dependencies: MediaDetailsDependencies,
-    onNavigateToMediaDetails: (mediaId: Int) -> Unit,
+    navigator: MediaDetailsNavigator,
 ) {
     navigation(
-        startDestination = MediaDetailsRoute.MediaDetailsMain.route,
-        route = MediaDetailsRoute.MediaDetailsGraph.route,
-        arguments = listOf(navArgument(MediaDetailsRoute.MEDIA_ID_KEY) { type = NavType.IntType })
+        startDestination = AppRoute.MediaDetails.Main.route,
+        route = AppRoute.MediaDetails.Graph.route,
+        arguments = listOf(
+            navArgument(AppRoute.MediaDetails.MEDIA_ID_KEY) {
+                type = NavType.IntType
+            }
+        )
     ) {
-        composable(MediaDetailsRoute.MediaDetailsMain.route) { backStackEntry ->
+        composable(AppRoute.MediaDetails.Main.route) { backStackEntry ->
             val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(MediaDetailsRoute.MediaDetailsGraph.route)
+                navController.getBackStackEntry(AppRoute.MediaDetails.Graph.route)
             }
             val arguments = requireNotNull(parentEntry.arguments)
-            val mediaId = arguments.getInt(MediaDetailsRoute.MEDIA_ID_KEY)
+            val mediaId = arguments.getInt(AppRoute.MediaDetails.MEDIA_ID_KEY)
 
             val componentViewModel: MediaDetailsComponentViewModel = viewModel(
                 viewModelStoreOwner = parentEntry,
@@ -51,12 +57,10 @@ internal fun NavGraphBuilder.mediaDetailsNavGraph(
                 viewModel.effect.collect { effect ->
                     when (effect) {
                         MediaDetailsEffect.NavigateBack -> {
-                            if (navController.previousBackStackEntry != null) {
-                                navController.navigateUp()
-                            }
+                            navigator.navigateBack()
                         }
 
-                        is MediaDetailsEffect.NavigateToMediaDetails -> onNavigateToMediaDetails(
+                        is MediaDetailsEffect.NavigateToMediaDetails -> navigator.navigateToMediaDetails(
                             effect.mediaId
                         )
 
